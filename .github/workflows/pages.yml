@@ -1,0 +1,46 @@
+name: Deploy demo to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/demo/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+# Allow the workflow to publish to Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One concurrent deploy; newer pushes supersede in-flight runs.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          # Attempt to turn Pages on automatically (GitHub Actions source).
+          enablement: true
+
+      - name: Upload demo as the site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # The interactive demo is self-contained; serve it at the site root.
+          path: docs/demo
+
+      - name: Deploy
+        id: deploy
+        uses: actions/deploy-pages@v4

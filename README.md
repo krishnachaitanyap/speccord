@@ -48,11 +48,12 @@ A slide walkthrough of what speccord is and how to use it. _(Download the editab
 A scripted, video-style walkthrough of the whole workflow with **play / pause / resume / back /
 next** controls — runs entirely in the browser, no install.
 
-[![speccord interactive demo](docs/demo/poster.svg)](docs/demo/index.html)
+▶ **[Launch the live demo](https://krishnachaitanyap.github.io/speccord/)** (hosted on GitHub Pages)
 
-▶ **[Open the demo](docs/demo/index.html)** — it's a single self-contained file: just open
-`docs/demo/index.html` in any browser (or `node docs/demo/serve.cjs` → http://localhost:8732, or
-enable GitHub Pages on `/docs` and visit `/demo/`). Space = play/pause, ← / → = back/next.
+[![speccord interactive demo](docs/demo/poster.svg)](https://krishnachaitanyap.github.io/speccord/)
+
+Prefer local? It's a single self-contained file — open `docs/demo/index.html` in any browser, or run
+`node docs/demo/serve.cjs` → http://localhost:8732. Space = play/pause, ← / → = back/next.
 
 ## Requirements
 
