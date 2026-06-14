@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img">
+  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#0f172a" opacity="1.0"/>
+  <rect x="0" y="0" width="12" height="720" rx="0" fill="#38bdf8" opacity="1.0"/>
+  <text x="80" y="92" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#38bdf8" text-anchor="start" opacity="1.0">THE PROBLEM</text>
+  <text x="80" y="150" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="bold" fill="#e2e8f0" text-anchor="start" opacity="1.0">Specs drift from code. Then they lie.</text>
+  <rect x="80" y="178" width="120" height="5" rx="2" fill="#38bdf8" opacity="1.0"/>
+  <rect x="80" y="230" width="350" height="300" rx="16" fill="#1e293b" opacity="1.0"/>
+  <rect x="80" y="230" width="350" height="8" rx="4" fill="#38bdf8" opacity="1.0"/>
+  <text x="110" y="300" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="28" font-weight="bold" fill="#38bdf8" text-anchor="start" opacity="1.0">Docs rot</text>
+  <text x="110" y="350" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0">Hand-written specs go</text>
+  <text x="110" y="380" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0">stale the moment code</text>
+  <text x="110" y="410" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0">changes. Nobody trusts</text>
+  <text x="110" y="440" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0">them.</text>
+  <rect x="460" y="230" width="350" height="300" rx="16" fill="#1e293b" opacity="1.0"/>
+  <rect x="460" y="230" width="350" height="8" rx="4" fill="#34d399" opacity="1.0"/>
+  <text x="490" y="300" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="28" font-weight="bold" fill="#34d399" text-anchor="start" opacity="1.0">Pure-LLM specs hallucinate</text>
+  <text x="490" y="350" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0">Generate-everything tools</text>
+  <text x="490" y="380" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0">invent endpoints, tables,</text>
+  <text x="490" y="410" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0">and scopes.</text>
+  <rect x="840" y="230" width="350" height="300" rx="16" fill="#1e293b" opacity="1.0"/>
+  <rect x="840" y="230" width="350" height="8" rx="4" fill="#a78bfa" opacity="1.0"/>
+  <text x="870" y="300" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="28" font-weight="bold" fill="#a78bfa" text-anchor="start" opacity="1.0">No enforcement</text>
+  <text x="870" y="350" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0">Nothing fails the build</text>
+  <text x="870" y="380" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0">when the contract and the</text>
+  <text x="870" y="410" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0">code disagree.</text>
+  <text x="80" y="600" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#e2e8f0" text-anchor="start" opacity="1.0">speccord&#x27;s answer: facts are deterministic — only prose is model-written.</text>
+  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#94a3b8" text-anchor="start" opacity="1.0">speccord</text>
+  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#94a3b8" text-anchor="end" opacity="1.0">2 / 9</text>
+</svg>

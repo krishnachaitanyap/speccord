@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img">
+  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#0f172a" opacity="1.0"/>
+  <rect x="0" y="0" width="12" height="720" rx="0" fill="#a78bfa" opacity="1.0"/>
+  <text x="80" y="92" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#a78bfa" text-anchor="start" opacity="1.0">TWO MINUTES</text>
+  <text x="80" y="150" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="bold" fill="#e2e8f0" text-anchor="start" opacity="1.0">Get started</text>
+  <rect x="80" y="178" width="120" height="5" rx="2" fill="#a78bfa" opacity="1.0"/>
+  <rect x="80" y="220" width="1120" height="330" rx="16" fill="#172033" opacity="1.0"/>
+  <text x="120" y="275" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="23" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0"># existing service</text>
+  <text x="120" y="305" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="23" font-weight="normal" fill="#34d399" text-anchor="start" opacity="1.0">speccord init --service orders</text>
+  <text x="120" y="335" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="23" font-weight="normal" fill="#e2e8f0" text-anchor="start" opacity="1.0">speccord discover   &amp;&amp;   speccord base draft</text>
+  <text x="120" y="395" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="23" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0"># new service</text>
+  <text x="120" y="425" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="23" font-weight="normal" fill="#34d399" text-anchor="start" opacity="1.0">speccord init --service giftcards --greenfield</text>
+  <text x="120" y="455" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="23" font-weight="normal" fill="#e2e8f0" text-anchor="start" opacity="1.0">speccord base new --intent &quot;...&quot;</text>
+  <text x="120" y="515" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="23" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0"># product / BMAD-style</text>
+  <text x="120" y="545" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="23" font-weight="normal" fill="#34d399" text-anchor="start" opacity="1.0">speccord init --pack product   &amp;&amp;   speccord capabilities</text>
+  <text x="80" y="605" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0">Read USAGE.md for full tutorials  ·  every pass/fail decision is deterministic.</text>
+  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#94a3b8" text-anchor="start" opacity="1.0">speccord</text>
+  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#94a3b8" text-anchor="end" opacity="1.0">9 / 9</text>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img">
+  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#0f172a" opacity="1.0"/>
+  <rect x="0" y="0" width="12" height="720" rx="0" fill="#34d399" opacity="1.0"/>
+  <text x="80" y="92" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#34d399" text-anchor="start" opacity="1.0">THE IDEA</text>
+  <text x="80" y="150" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="bold" fill="#e2e8f0" text-anchor="start" opacity="1.0">Hybrid by construction</text>
+  <rect x="80" y="178" width="120" height="5" rx="2" fill="#34d399" opacity="1.0"/>
+  <rect x="80" y="220" width="540" height="320" rx="16" fill="#1e293b" opacity="1.0"/>
+  <text x="110" y="280" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="26" font-weight="bold" fill="#34d399" text-anchor="start" opacity="1.0">Deterministic (code)</text>
+  <text x="110" y="330" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#e2e8f0" text-anchor="start" opacity="1.0">• Parse OpenAPI · migrations · Kafka · security</text>
+  <text x="110" y="376" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#e2e8f0" text-anchor="start" opacity="1.0">• Diff the contract surface (drift)</text>
+  <text x="110" y="422" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#e2e8f0" text-anchor="start" opacity="1.0">• Lifecycle state machine + entry gates</text>
+  <text x="110" y="468" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#e2e8f0" text-anchor="start" opacity="1.0">• Capability resolution from scale</text>
+  <rect x="660" y="220" width="540" height="320" rx="16" fill="#1e293b" opacity="1.0"/>
+  <text x="690" y="280" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="26" font-weight="bold" fill="#a78bfa" text-anchor="start" opacity="1.0">Model-written (prose only)</text>
+  <text x="690" y="330" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#e2e8f0" text-anchor="start" opacity="1.0">• Draft narrative around established facts</text>
+  <text x="690" y="376" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#e2e8f0" text-anchor="start" opacity="1.0">• Plans, PRDs, stories, reviews</text>
+  <text x="690" y="422" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#e2e8f0" text-anchor="start" opacity="1.0">• Never invents endpoints/tables/scopes</text>
+  <text x="690" y="468" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#e2e8f0" text-anchor="start" opacity="1.0">• Grounded in spec + constitution</text>
+  <text x="640.0" y="600" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#e2e8f0" text-anchor="middle" opacity="1.0">Pass/fail is always code. The model only writes the words.</text>
+  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#94a3b8" text-anchor="start" opacity="1.0">speccord</text>
+  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#94a3b8" text-anchor="end" opacity="1.0">3 / 9</text>
+</svg>

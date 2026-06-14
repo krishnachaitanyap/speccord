@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>speccord — interactive demo</title>
+<style>
+  :root{
+    --bg:#0f172a; --panel:#1e293b; --panel2:#172033; --text:#e2e8f0; --muted:#94a3b8;
+    --sky:#38bdf8; --emerald:#34d399; --violet:#a78bfa; --amber:#fbbf24; --red:#f87171;
+    --mono:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+    --sans:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#020617;color:var(--text);font-family:var(--sans);
+       display:flex;justify-content:center;padding:24px}
+  .app{width:100%;max-width:1080px}
+  header{display:flex;align-items:baseline;gap:14px;margin-bottom:14px}
+  header h1{font-size:26px;margin:0;letter-spacing:.5px}
+  header .tag{color:var(--sky);font-size:14px}
+  header .by{margin-left:auto;color:var(--muted);font-size:12px}
+  .layout{display:grid;grid-template-columns:230px 1fr;gap:16px}
+  .chapters{background:var(--panel);border-radius:12px;padding:10px;max-height:560px;overflow:auto}
+  .chapters h2{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:6px 8px 10px}
+  .chapters ol{list-style:none;margin:0;padding:0;counter-reset:c}
+  .chapters li{counter-increment:c;padding:8px 10px;border-radius:8px;font-size:13px;cursor:pointer;color:var(--muted);
+               display:flex;gap:8px;align-items:center}
+  .chapters li::before{content:counter(c);font-family:var(--mono);font-size:11px;color:var(--muted);
+               width:18px;height:18px;border-radius:50%;border:1px solid #334155;display:grid;place-items:center;flex:0 0 auto}
+  .chapters li:hover{background:var(--panel2);color:var(--text)}
+  .chapters li.active{background:var(--panel2);color:var(--text)}
+  .chapters li.active::before{border-color:var(--sky);color:var(--sky)}
+  .chapters li.done::before{border-color:var(--emerald);color:var(--emerald)}
+  .terminal{background:#0b1220;border-radius:12px;border:1px solid #1e293b;overflow:hidden;display:flex;flex-direction:column}
+  .titlebar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#0d1526;border-bottom:1px solid #1e293b}
+  .dot{width:12px;height:12px;border-radius:50%}
+  .dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c840}
+  .titlebar .name{margin-left:8px;color:var(--muted);font-size:12px;font-family:var(--mono)}
+  .screen{padding:16px 18px;height:470px;overflow:auto;font-family:var(--mono);font-size:13.5px;line-height:1.6}
+  .scene{margin-bottom:14px}
+  .scene .cmd{color:var(--text)}
+  .scene .cmd .p{color:var(--emerald);user-select:none}
+  .scene .cap{color:var(--violet);font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+  .scene .out{white-space:pre-wrap;color:#cbd5e1}
+  .scene .out .ok{color:var(--emerald)}
+  .scene .out .warn{color:var(--amber)}
+  .scene .out .err{color:var(--red)}
+  .scene .out .hl{color:var(--sky)}
+  .cursor{display:inline-block;width:8px;height:15px;background:var(--emerald);vertical-align:-2px;
+          animation:blink 1s steps(1) infinite;margin-left:2px}
+  @keyframes blink{50%{opacity:0}}
+  .controls{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#0d1526;border-top:1px solid #1e293b}
+  button{background:var(--panel);color:var(--text);border:1px solid #334155;border-radius:8px;
+         padding:8px 14px;font-size:14px;cursor:pointer;font-family:var(--sans)}
+  button:hover{background:var(--panel2);border-color:var(--sky)}
+  button.primary{background:var(--sky);color:#04263a;border-color:var(--sky);font-weight:700;min-width:104px}
+  .progress{flex:1;height:6px;background:#1e293b;border-radius:3px;overflow:hidden}
+  .progress .bar{height:100%;width:0;background:linear-gradient(90deg,var(--sky),var(--emerald));transition:width .25s}
+  .count{color:var(--muted);font-size:12px;font-family:var(--mono);min-width:46px;text-align:right}
+  .note{margin-top:12px;color:var(--muted);font-size:12.5px}
+  @media(max-width:760px){.layout{grid-template-columns:1fr}.chapters{max-height:140px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>speccord</h1>
+    <span class="tag">interactive demo — the spec is the contract your code is checked against</span>
+    <span class="by">▶ play · ⏸ pause · ⏭ next · ⏮ back</span>
+  </header>
+  <div class="layout">
+    <nav class="chapters"><h2>Chapters</h2><ol id="chapters"></ol></nav>
+    <div class="terminal">
+      <div class="titlebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="name">orders — speccord demo</span></div>
+      <div class="screen" id="screen"></div>
+      <div class="controls">
+        <button id="back" title="Previous step">⏮ Back</button>
+        <button id="playpause" class="primary" title="Play / Pause">▶ Play</button>
+        <button id="next" title="Next step">⏭ Next</button>
+        <button id="restart" title="Restart">↻</button>
+        <div class="progress"><div class="bar" id="bar"></div></div>
+        <span class="count" id="count">0 / 0</span>
+      </div>
+    </div>
+  </div>
+  <p class="note">A scripted walkthrough — no install needed. Use the controls to play, pause/resume, or
+    step back and next. Outputs mirror real <code>speccord</code> runs.</p>
+</div>
+
+<script>
+// Each scene: { title, cap, cmd, out } — out may contain markup spans (.ok/.warn/.err/.hl).
+const SCENES = [
+  { title: "Initialize", cap: "setup", cmd: "speccord init --service orders --scale 2",
+    out: `Initialized speccord for service "orders".
+  - speccord.config.yaml (scale: 2/medium, preset: standard)
+  - specs/constitution.md
+  - specs/{base,features,stories,templates}/
+
+<span class="hl">See what is enabled at this scale:  speccord capabilities</span>
+Brownfield. Next: speccord discover   then   speccord base draft` },
+
+  { title: "What's enabled", cap: "configure", cmd: "speccord capabilities",
+    out: `Scale:    2 (medium) — Standard feature work. Plan, solution, story-driven dev, QA.
+Phases:   [x] planning  [x] solutioning  [x] implementation
+Roles:    pm  architect  sm  dev  qa
+Capabilities:
+  [x] prd           planning       <span class="hl">→ prd</span>
+  [x] architecture  solutioning    <span class="hl">→ discover, base draft|new, plan</span>
+  [x] epicsStories  implementation <span class="hl">→ story new|list|next|advance</span>
+  [x] qaReview      implementation <span class="hl">→ review, agent qa</span>
+  [x] conformance   implementation <span class="hl">→ conform</span>` },
+
+  { title: "Discover (brownfield)", cap: "analysis", cmd: "speccord discover",
+    out: `Discovered: orders
+  API:      14 operations (src/main/resources/openapi.yaml)
+  Data:     6 tables across 9 migrations
+  Events:   3 Kafka topics
+  Security: resource-server=true, scopes=[orders.read, orders.write]
+
+Report written to .speccord/discovery-report.json. Next: speccord base draft` },
+
+  { title: "Draft the base spec", cap: "solutioning", cmd: "speccord base draft --yes",
+    out: `Using cached discovery report (.speccord/discovery-report.json).
+Drafting prose with the LLM...
+
+<span class="ok">Base spec written to specs/base/orders.md (status: Draft).</span>
+Conformance baseline snapshot written to .speccord/baseline.json.` },
+
+  { title: "New feature", cap: "planning", cmd: 'speccord feature new --id SPEC-142 --title "Order cancellation"',
+    out: `<span class="ok">Created specs/features/SPEC-142-order-cancellation.md</span> (status: Draft, base orders v0.1).` },
+
+  { title: "Plan + tasks", cap: "solutioning", cmd: "speccord plan specs/features/SPEC-142-*.md  &&  speccord tasks specs/features/SPEC-142-*.md",
+    out: `Drafting plan with the LLM...
+<span class="ok">Plan written to specs/features/SPEC-142-order-cancellation.plan.md</span>
+Deriving tasks with the LLM...
+<span class="ok">Tasks written to ...SPEC-142-order-cancellation.tasks.md (7 tasks).</span>` },
+
+  { title: "Analyze (deterministic)", cap: "verify", cmd: "speccord analyze specs/features/SPEC-142-*.md",
+    out: `  <span class="err">[error]</span> (coverage) AC-2 is not linked to a test
+  <span class="warn">[warn]</span> (constitution) plan does not reference any principle (P-n)
+
+1 error(s), 1 warning(s).
+<span class="err">Analysis found blocking issues.</span>  ← fix, then re-run` },
+
+  { title: "Advance (gate enforced)", cap: "lifecycle", cmd: "speccord advance specs/features/SPEC-142-*.md --to Approved",
+    out: `Gate to enter "Approved" not satisfied:
+  - <span class="warn">every acceptance criterion must link to a test</span>
+<span class="err">Blocked.</span> Fix the above and retry.
+
+# ...after linking tests:
+<span class="ok">SPEC-142-order-cancellation.md: In Review → Approved</span>` },
+
+  { title: "Story-driven dev", cap: "implementation", cmd: 'speccord story new --epic EPIC-1 --title "Issue refund on cancel"',
+    out: `<span class="ok">Created specs/stories/STORY-1-issue-refund-on-cancel.md</span> (STORY-1, status: Draft, EPIC-1).
+Next: speccord story advance ... --to Ready   then   speccord story implement` },
+
+  { title: "Conformance / drift", cap: "verify", cmd: "speccord conform",
+    out: `Structural drift: 1 change(s) vs baseline:
+  <span class="err">+ table: refunds</span>
+
+<span class="err">NOT CONFORMANT:</span> the spec is out of date. Update the base spec.
+# the contract changed but the spec didn't — caught automatically.` },
+
+  { title: "Wire up AI agents", cap: "integration", cmd: "speccord agent-rules",
+    out: `claude:
+  <span class="ok">✓ .mcp.json</span>      <span class="ok">✓ CLAUDE.md</span>
+cursor:
+  <span class="ok">✓ .cursor/mcp.json</span>   <span class="ok">✓ .cursor/rules/speccord.mdc</span>
+copilot:
+  <span class="ok">✓ .vscode/mcp.json</span>   <span class="ok">✓ .github/copilot-instructions.md</span>
+
+MCP server: <span class="hl">speccord mcp</span> — read · verify · transition tools for your agent.` },
+
+  { title: "The loop", cap: "summary", cmd: "speccord mcp   # agent reads spec → writes code → verifies → advances",
+    out: `<span class="hl">speccord MCP server: ready on stdio</span>
+
+agent reads spec (get_base_spec) → writes code
+   → analyze · lint · gate · conform  (deterministic gates)
+   → fail: fix · pass: <span class="ok">advance</span>   ↺ repeat
+
+<span class="ok">The model writes prose. Code decides pass/fail.</span>` },
+];
+
+const screen = document.getElementById('screen');
+const bar = document.getElementById('bar');
+const count = document.getElementById('count');
+const chaptersEl = document.getElementById('chapters');
+const playBtn = document.getElementById('playpause');
+
+let idx = -1, playing = false, token = 0;
+
+// Build chapter list
+SCENES.forEach((s, i) => {
+  const li = document.createElement('li');
+  li.textContent = s.title;
+  li.addEventListener('click', () => { stop(); idx = i; renderUpTo(i); });
+  chaptersEl.appendChild(li);
+});
+
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+// Human-like keystroke timing: a slower base with jitter, plus a beat after
+// spaces and punctuation so it reads like someone actually typing.
+function typeDelay(ch) {
+  let d = 65 + Math.random() * 75;          // ~65–140ms per key
+  if (ch === ' ') d += 70;                  // pause between words
+  if ('.,:/-_"'.includes(ch)) d += 90;      // pause around punctuation
+  if (Math.random() < 0.06) d += 220;       // occasional "thinking" hesitation
+  return d;
+}
+
+function sceneHTML(s, cmdText, showCursor) {
+  const cur = showCursor ? '<span class="cursor"></span>' : '';
+  return `<div class="scene">
+    <div class="cap">${s.cap}</div>
+    <div class="cmd"><span class="p">$ </span>${cmdText}${cur}</div>
+    ${cmdText === s.cmd && !showCursor ? `<div class="out">${s.out}</div>` : ''}
+  </div>`;
+}
+
+function renderUpTo(i) {
+  let html = '';
+  for (let k = 0; k <= i; k++) html += sceneHTML(SCENES[k], SCENES[k].cmd, false);
+  screen.innerHTML = html;
+  screen.scrollTop = screen.scrollHeight;
+  updateChrome(i);
+}
+
+function updateChrome(i) {
+  bar.style.width = SCENES.length ? `${((i + 1) / SCENES.length) * 100}%` : '0';
+  count.textContent = `${Math.max(i + 1, 0)} / ${SCENES.length}`;
+  [...chaptersEl.children].forEach((li, k) => {
+    li.classList.toggle('active', k === i);
+    li.classList.toggle('done', k < i);
+  });
+  playBtn.textContent = playing ? '⏸ Pause' : (i >= SCENES.length - 1 ? '↻ Replay' : '▶ Play');
+}
+
+// Animate scene i: render prior scenes, type the command, then reveal output.
+async function animate(i, myToken) {
+  let base = '';
+  for (let k = 0; k < i; k++) base += sceneHTML(SCENES[k], SCENES[k].cmd, false);
+  const s = SCENES[i];
+  for (let c = 0; c <= s.cmd.length; c++) {
+    if (myToken !== token) return;
+    screen.innerHTML = base + sceneHTML(s, s.cmd.slice(0, c), true);
+    screen.scrollTop = screen.scrollHeight;
+    await sleep(c === 0 ? 120 : typeDelay(s.cmd[c - 1]));
+  }
+  if (myToken !== token) return;
+  await sleep(450);
+  if (myToken !== token) return;
+  screen.innerHTML = base + sceneHTML(s, s.cmd, false);
+  screen.scrollTop = screen.scrollHeight;
+  updateChrome(i);
+}
+
+async function play() {
+  if (playing) return;
+  if (idx >= SCENES.length - 1) { idx = -1; } // replay from start
+  playing = true;
+  const myToken = ++token;
+  if (idx < 0) idx = 0;
+  for (; idx < SCENES.length; idx++) {
+    updateChrome(idx);
+    await animate(idx, myToken);
+    if (myToken !== token) return;
+    await sleep(950);
+    if (myToken !== token) return;
+  }
+  idx = SCENES.length - 1;
+  playing = false;
+  updateChrome(idx);
+}
+
+function stop() { playing = false; token++; }
+function pause() { stop(); renderUpTo(idx < 0 ? 0 : idx); }
+function next() { stop(); idx = Math.min((idx < 0 ? -1 : idx) + 1, SCENES.length - 1); renderUpTo(idx); }
+function back() { stop(); idx = Math.max(idx - 1, 0); renderUpTo(idx); }
+
+playBtn.addEventListener('click', () => { playing ? pause() : play(); });
+document.getElementById('next').addEventListener('click', next);
+document.getElementById('back').addEventListener('click', back);
+document.getElementById('restart').addEventListener('click', () => { stop(); idx = 0; renderUpTo(0); });
+document.addEventListener('keydown', (e) => {
+  if (e.key === ' ') { e.preventDefault(); playing ? pause() : play(); }
+  else if (e.key === 'ArrowRight') next();
+  else if (e.key === 'ArrowLeft') back();
+});
+
+// initial frame
+idx = 0; renderUpTo(0);
+</script>
+</body>
+</html>

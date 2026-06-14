@@ -1,0 +1,51 @@
+{
+  "name": "speccord",
+  "version": "0.1.0",
+  "description": "Spec-driven development CLI for brownfield services: discover, review, confirm, generate, and maintain the lifecycle of specs.",
+  "type": "module",
+  "bin": {
+    "speccord": "./bin/run.js"
+  },
+  "files": [
+    "/bin",
+    "/dist"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.40.0",
+    "@inquirer/prompts": "^7.2.0",
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@oclif/core": "^4.2.0",
+    "fast-glob": "^3.3.2",
+    "yaml": "^2.6.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  },
+  "oclif": {
+    "bin": "speccord",
+    "dirname": "speccord",
+    "commands": "./dist/commands",
+    "topicSeparator": " ",
+    "topics": {
+      "base": {
+        "description": "Create and manage the base (service-level) spec"
+      },
+      "feature": {
+        "description": "Create and manage feature specs"
+      },
+      "story": {
+        "description": "Context-engineered, story-driven development (BMAD-style)"
+      }
+    }
+  }
+}

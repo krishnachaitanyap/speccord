@@ -1,0 +1,11 @@
+# dependencies & build output
+node_modules/
+dist/
+*.tsbuildinfo
+
+# speccord runtime state (generated per-project)
+.speccord/
+
+# os / editor
+.DS_Store
+*.log
