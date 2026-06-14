@@ -1,35 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img">
-  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#0f172a" opacity="1.0"/>
-  <rect x="0" y="0" width="12" height="720" rx="0" fill="#fbbf24" opacity="1.0"/>
-  <text x="80" y="92" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#fbbf24" text-anchor="start" opacity="1.0">CONFIGURABLE</text>
-  <text x="80" y="150" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="bold" fill="#e2e8f0" text-anchor="start" opacity="1.0">One knob: scale (0–4)</text>
-  <rect x="80" y="178" width="120" height="5" rx="2" fill="#fbbf24" opacity="1.0"/>
-  <text x="80" y="205" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0">Scale sets active phases, enabled roles, and default capabilities — all overridable.</text>
-  <rect x="80" y="250" width="214" height="240" rx="16" fill="#1e293b" opacity="1.0"/>
-  <text x="187.0" y="330" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="bold" fill="#38bdf8" text-anchor="middle" opacity="1.0">0</text>
-  <text x="187.0" y="375" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#e2e8f0" text-anchor="middle" opacity="1.0">prototype</text>
-  <text x="187.0" y="420" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="normal" fill="#94a3b8" text-anchor="middle" opacity="1.0">implement only</text>
-  <rect x="304" y="250" width="214" height="240" rx="16" fill="#1e293b" opacity="1.0"/>
-  <text x="411.0" y="330" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="bold" fill="#34d399" text-anchor="middle" opacity="1.0">1</text>
-  <text x="411.0" y="375" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#e2e8f0" text-anchor="middle" opacity="1.0">small</text>
-  <text x="411.0" y="420" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="normal" fill="#94a3b8" text-anchor="middle" opacity="1.0">+ plan, stories,</text>
-  <text x="411.0" y="450" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="normal" fill="#94a3b8" text-anchor="middle" opacity="1.0">gate</text>
-  <rect x="528" y="250" width="214" height="240" rx="16" fill="#1e293b" opacity="1.0"/>
-  <text x="635.0" y="330" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="bold" fill="#a78bfa" text-anchor="middle" opacity="1.0">2</text>
-  <text x="635.0" y="375" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#e2e8f0" text-anchor="middle" opacity="1.0">medium</text>
-  <text x="635.0" y="420" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="normal" fill="#94a3b8" text-anchor="middle" opacity="1.0">+ solutioning,</text>
-  <text x="635.0" y="450" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="normal" fill="#94a3b8" text-anchor="middle" opacity="1.0">PRD, QA</text>
-  <rect x="752" y="250" width="214" height="240" rx="16" fill="#1e293b" opacity="1.0"/>
-  <text x="859.0" y="330" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="bold" fill="#fbbf24" text-anchor="middle" opacity="1.0">3</text>
-  <text x="859.0" y="375" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#e2e8f0" text-anchor="middle" opacity="1.0">large</text>
-  <text x="859.0" y="420" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="normal" fill="#94a3b8" text-anchor="middle" opacity="1.0">+ analysis, UX</text>
-  <rect x="976" y="250" width="214" height="240" rx="16" fill="#1e293b" opacity="1.0"/>
-  <text x="1083.0" y="330" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="bold" fill="#38bdf8" text-anchor="middle" opacity="1.0">4</text>
-  <text x="1083.0" y="375" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#e2e8f0" text-anchor="middle" opacity="1.0">enterprise</text>
-  <text x="1083.0" y="420" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="normal" fill="#94a3b8" text-anchor="middle" opacity="1.0">+ PO, compliance</text>
-  <text x="1083.0" y="450" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="normal" fill="#94a3b8" text-anchor="middle" opacity="1.0">gates</text>
-  <text x="80" y="575" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="24" font-weight="bold" fill="#34d399" text-anchor="start" opacity="1.0">speccord capabilities</text>
-  <text x="80" y="612" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0">shows what&#x27;s on, which command each unlocks, and how to change it.</text>
-  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#94a3b8" text-anchor="start" opacity="1.0">speccord</text>
-  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#94a3b8" text-anchor="end" opacity="1.0">5 / 9</text>
+  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#07171a" opacity="1.0"/>
+  <rect x="0" y="0" width="12" height="720" rx="0" fill="#67e8f9" opacity="1.0"/>
+  <text x="80" y="92" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#67e8f9" text-anchor="start" opacity="1.0">CONFIGURABLE</text>
+  <text x="80" y="150" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="bold" fill="#d6eef0" text-anchor="start" opacity="1.0">One knob: scale (0–4)</text>
+  <rect x="80" y="178" width="120" height="5" rx="2" fill="#67e8f9" opacity="1.0"/>
+  <text x="80" y="205" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0">Scale sets active phases, enabled roles, and default capabilities — all overridable.</text>
+  <rect x="80" y="250" width="214" height="240" rx="16" fill="#0f242a" opacity="1.0"/>
+  <text x="187.0" y="330" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="bold" fill="#22d3ee" text-anchor="middle" opacity="1.0">0</text>
+  <text x="187.0" y="375" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#d6eef0" text-anchor="middle" opacity="1.0">prototype</text>
+  <text x="187.0" y="420" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="normal" fill="#8fb2b6" text-anchor="middle" opacity="1.0">implement only</text>
+  <rect x="304" y="250" width="214" height="240" rx="16" fill="#0f242a" opacity="1.0"/>
+  <text x="411.0" y="330" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="bold" fill="#2dd4bf" text-anchor="middle" opacity="1.0">1</text>
+  <text x="411.0" y="375" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#d6eef0" text-anchor="middle" opacity="1.0">small</text>
+  <text x="411.0" y="420" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="normal" fill="#8fb2b6" text-anchor="middle" opacity="1.0">+ plan, stories,</text>
+  <text x="411.0" y="450" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="normal" fill="#8fb2b6" text-anchor="middle" opacity="1.0">gate</text>
+  <rect x="528" y="250" width="214" height="240" rx="16" fill="#0f242a" opacity="1.0"/>
+  <text x="635.0" y="330" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="bold" fill="#5eead4" text-anchor="middle" opacity="1.0">2</text>
+  <text x="635.0" y="375" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#d6eef0" text-anchor="middle" opacity="1.0">medium</text>
+  <text x="635.0" y="420" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="normal" fill="#8fb2b6" text-anchor="middle" opacity="1.0">+ solutioning,</text>
+  <text x="635.0" y="450" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="normal" fill="#8fb2b6" text-anchor="middle" opacity="1.0">PRD, QA</text>
+  <rect x="752" y="250" width="214" height="240" rx="16" fill="#0f242a" opacity="1.0"/>
+  <text x="859.0" y="330" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="bold" fill="#67e8f9" text-anchor="middle" opacity="1.0">3</text>
+  <text x="859.0" y="375" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#d6eef0" text-anchor="middle" opacity="1.0">large</text>
+  <text x="859.0" y="420" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="normal" fill="#8fb2b6" text-anchor="middle" opacity="1.0">+ analysis, UX</text>
+  <rect x="976" y="250" width="214" height="240" rx="16" fill="#0f242a" opacity="1.0"/>
+  <text x="1083.0" y="330" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="bold" fill="#22d3ee" text-anchor="middle" opacity="1.0">4</text>
+  <text x="1083.0" y="375" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#d6eef0" text-anchor="middle" opacity="1.0">enterprise</text>
+  <text x="1083.0" y="420" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="normal" fill="#8fb2b6" text-anchor="middle" opacity="1.0">+ PO, compliance</text>
+  <text x="1083.0" y="450" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="normal" fill="#8fb2b6" text-anchor="middle" opacity="1.0">gates</text>
+  <text x="80" y="575" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="24" font-weight="bold" fill="#2dd4bf" text-anchor="start" opacity="1.0">speccord capabilities</text>
+  <text x="80" y="612" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0">shows what&#x27;s on, which command each unlocks, and how to change it.</text>
+  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#8fb2b6" text-anchor="start" opacity="1.0">speccord</text>
+  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#8fb2b6" text-anchor="end" opacity="1.0">5 / 9</text>
 </svg>

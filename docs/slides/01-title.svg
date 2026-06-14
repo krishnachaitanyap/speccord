@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img">
-  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#0f172a" opacity="1.0"/>
-  <rect x="0" y="250" width="1280" height="3" rx="0" fill="#38bdf8" opacity="0.5"/>
-  <rect x="0" y="256" width="1280" height="3" rx="0" fill="#34d399" opacity="0.5"/>
-  <rect x="0" y="262" width="1280" height="3" rx="0" fill="#a78bfa" opacity="0.5"/>
-  <text x="640.0" y="250" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="120" font-weight="bold" fill="#e2e8f0" text-anchor="middle" opacity="1.0">speccord</text>
-  <text x="640.0" y="320" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="normal" fill="#38bdf8" text-anchor="middle" opacity="1.0">the spec is the contract your code is checked against</text>
-  <text x="640.0" y="430" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="normal" fill="#94a3b8" text-anchor="middle" opacity="1.0">A spec-driven development CLI — a configurable superset of</text>
-  <rect x="340.0" y="480" width="247" height="40" rx="20" fill="none" opacity="1.0" stroke="#38bdf8" stroke-width="2"/><text x="463.5" y="506" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#38bdf8" text-anchor="middle" opacity="1.0">spec-kit · generative</text>
-  <rect x="570.0" y="480" width="258" height="40" rx="20" fill="none" opacity="1.0" stroke="#34d399" stroke-width="2"/><text x="699.0" y="506" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#34d399" text-anchor="middle" opacity="1.0">speccord · enforcement</text>
-  <rect x="805.0" y="480" width="236" height="40" rx="20" fill="none" opacity="1.0" stroke="#a78bfa" stroke-width="2"/><text x="923.0" y="506" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#a78bfa" text-anchor="middle" opacity="1.0">BMAD · agentic agile</text>
-  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#94a3b8" text-anchor="start" opacity="1.0">speccord</text>
-  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#94a3b8" text-anchor="end" opacity="1.0">1 / 9</text>
+  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#07171a" opacity="1.0"/>
+  <rect x="0" y="250" width="1280" height="3" rx="0" fill="#22d3ee" opacity="0.5"/>
+  <rect x="0" y="256" width="1280" height="3" rx="0" fill="#2dd4bf" opacity="0.5"/>
+  <rect x="0" y="262" width="1280" height="3" rx="0" fill="#5eead4" opacity="0.5"/>
+  <text x="640.0" y="250" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="120" font-weight="bold" fill="#d6eef0" text-anchor="middle" opacity="1.0">speccord</text>
+  <text x="640.0" y="320" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="normal" fill="#22d3ee" text-anchor="middle" opacity="1.0">the spec is the contract your code is checked against</text>
+  <text x="640.0" y="430" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="normal" fill="#8fb2b6" text-anchor="middle" opacity="1.0">A spec-driven development CLI — a configurable superset of</text>
+  <rect x="340.0" y="480" width="247" height="40" rx="20" fill="none" opacity="1.0" stroke="#22d3ee" stroke-width="2"/><text x="463.5" y="506" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#22d3ee" text-anchor="middle" opacity="1.0">spec-kit · generative</text>
+  <rect x="570.0" y="480" width="258" height="40" rx="20" fill="none" opacity="1.0" stroke="#2dd4bf" stroke-width="2"/><text x="699.0" y="506" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#2dd4bf" text-anchor="middle" opacity="1.0">speccord · enforcement</text>
+  <rect x="805.0" y="480" width="236" height="40" rx="20" fill="none" opacity="1.0" stroke="#5eead4" stroke-width="2"/><text x="923.0" y="506" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#5eead4" text-anchor="middle" opacity="1.0">BMAD · agentic agile</text>
+  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#8fb2b6" text-anchor="start" opacity="1.0">speccord</text>
+  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#8fb2b6" text-anchor="end" opacity="1.0">1 / 9</text>
 </svg>

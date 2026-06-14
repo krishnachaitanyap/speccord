@@ -1,24 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img">
-  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#0f172a" opacity="1.0"/>
-  <rect x="0" y="0" width="12" height="720" rx="0" fill="#a78bfa" opacity="1.0"/>
-  <text x="80" y="92" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#a78bfa" text-anchor="start" opacity="1.0">THE SUPERSET</text>
-  <text x="80" y="150" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="bold" fill="#e2e8f0" text-anchor="start" opacity="1.0">Three lineages, one CLI</text>
-  <rect x="80" y="178" width="120" height="5" rx="2" fill="#a78bfa" opacity="1.0"/>
-  <rect x="80" y="230" width="1120" height="110" rx="16" fill="#1e293b" opacity="1.0"/>
-  <rect x="80" y="230" width="8" height="110" rx="4" fill="#38bdf8" opacity="1.0"/>
-  <text x="120" y="280" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="bold" fill="#38bdf8" text-anchor="start" opacity="1.0">spec-kit</text>
-  <text x="120" y="318" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0">Generative chain</text>
-  <text x="480" y="298" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="21" font-weight="normal" fill="#e2e8f0" text-anchor="start" opacity="1.0">constitution → spec → plan → tasks → implement</text>
-  <rect x="80" y="360" width="1120" height="110" rx="16" fill="#1e293b" opacity="1.0"/>
-  <rect x="80" y="360" width="8" height="110" rx="4" fill="#34d399" opacity="1.0"/>
-  <text x="120" y="410" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="bold" fill="#34d399" text-anchor="start" opacity="1.0">speccord</text>
-  <text x="120" y="448" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0">Extraction + enforcement</text>
-  <text x="480" y="428" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="21" font-weight="normal" fill="#e2e8f0" text-anchor="start" opacity="1.0">discover · lifecycle gates · CI drift gate · conform</text>
-  <rect x="80" y="490" width="1120" height="110" rx="16" fill="#1e293b" opacity="1.0"/>
-  <rect x="80" y="490" width="8" height="110" rx="4" fill="#a78bfa" opacity="1.0"/>
-  <text x="120" y="540" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="bold" fill="#a78bfa" text-anchor="start" opacity="1.0">BMAD-METHOD</text>
-  <text x="120" y="578" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#94a3b8" text-anchor="start" opacity="1.0">Agentic agile</text>
-  <text x="480" y="558" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="21" font-weight="normal" fill="#e2e8f0" text-anchor="start" opacity="1.0">role personas · scale-adaptive · PRD → epics → stories</text>
-  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#94a3b8" text-anchor="start" opacity="1.0">speccord</text>
-  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#94a3b8" text-anchor="end" opacity="1.0">4 / 9</text>
+  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#07171a" opacity="1.0"/>
+  <rect x="0" y="0" width="12" height="720" rx="0" fill="#5eead4" opacity="1.0"/>
+  <text x="80" y="92" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#5eead4" text-anchor="start" opacity="1.0">THE SUPERSET</text>
+  <text x="80" y="150" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="bold" fill="#d6eef0" text-anchor="start" opacity="1.0">Three lineages, one CLI</text>
+  <rect x="80" y="178" width="120" height="5" rx="2" fill="#5eead4" opacity="1.0"/>
+  <rect x="80" y="230" width="1120" height="110" rx="16" fill="#0f242a" opacity="1.0"/>
+  <rect x="80" y="230" width="8" height="110" rx="4" fill="#22d3ee" opacity="1.0"/>
+  <text x="120" y="280" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="bold" fill="#22d3ee" text-anchor="start" opacity="1.0">spec-kit</text>
+  <text x="120" y="318" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0">Generative chain</text>
+  <text x="480" y="298" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="21" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">constitution → spec → plan → tasks → implement</text>
+  <rect x="80" y="360" width="1120" height="110" rx="16" fill="#0f242a" opacity="1.0"/>
+  <rect x="80" y="360" width="8" height="110" rx="4" fill="#2dd4bf" opacity="1.0"/>
+  <text x="120" y="410" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="bold" fill="#2dd4bf" text-anchor="start" opacity="1.0">speccord</text>
+  <text x="120" y="448" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0">Extraction + enforcement</text>
+  <text x="480" y="428" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="21" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">discover · lifecycle gates · CI drift gate · conform</text>
+  <rect x="80" y="490" width="1120" height="110" rx="16" fill="#0f242a" opacity="1.0"/>
+  <rect x="80" y="490" width="8" height="110" rx="4" fill="#5eead4" opacity="1.0"/>
+  <text x="120" y="540" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="bold" fill="#5eead4" text-anchor="start" opacity="1.0">BMAD-METHOD</text>
+  <text x="120" y="578" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0">Agentic agile</text>
+  <text x="480" y="558" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="21" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">role personas · scale-adaptive · PRD → epics → stories</text>
+  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#8fb2b6" text-anchor="start" opacity="1.0">speccord</text>
+  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#8fb2b6" text-anchor="end" opacity="1.0">4 / 9</text>
 </svg>

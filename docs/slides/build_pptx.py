@@ -7,14 +7,14 @@ from pptx.util import Inches, Pt, Emu
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 
-BG = RGBColor(0x0F, 0x17, 0x2A)
-PANEL = RGBColor(0x1E, 0x29, 0x3B)
-TEXT = RGBColor(0xE2, 0xE8, 0xF0)
-MUTED = RGBColor(0x94, 0xA3, 0xB8)
-SKY = RGBColor(0x38, 0xBD, 0xF8)
-EMERALD = RGBColor(0x34, 0xD3, 0x99)
-VIOLET = RGBColor(0xA7, 0x8B, 0xFA)
-AMBER = RGBColor(0xFB, 0xBF, 0x24)
+BG = RGBColor(0x07, 0x17, 0x1A)
+PANEL = RGBColor(0x0F, 0x24, 0x2A)
+TEXT = RGBColor(0xD6, 0xEE, 0xF0)
+MUTED = RGBColor(0x8F, 0xB2, 0xB6)
+SKY = RGBColor(0x22, 0xD3, 0xEE)
+EMERALD = RGBColor(0x2D, 0xD4, 0xBF)
+VIOLET = RGBColor(0x5E, 0xEA, 0xD4)
+AMBER = RGBColor(0x67, 0xE8, 0xF9)
 ACCENTS = [SKY, EMERALD, VIOLET, AMBER]
 EMU = 914400
 SW, SH = 13.333, 7.5
@@ -225,7 +225,7 @@ def s_agents(n, tot):
         text(s, x + 0.3, 2.65, 3.4, 0.5, nm, size=18, color=c, bold=True)
         text(s, x + 0.3, 3.15, 3.4, 0.4, a, size=14, color=TEXT, font=MONO)
         text(s, x + 0.3, 3.5, 3.4, 0.4, b, size=14, color=MUTED, font=MONO)
-    box(s, 0.7, 4.2, 11.9, 1.4, RGBColor(0x17, 0x20, 0x33))
+    box(s, 0.7, 4.2, 11.9, 1.4, RGBColor(0x0B, 0x20, 0x26))
     text(s, 1.0, 4.4, 11, 0.4, "MCP tools (speccord mcp):", size=16, color=EMERALD, bold=True)
     text(s, 1.0, 4.8, 11.5, 0.4, "read -> get_base_spec · get_constitution · story_next", size=15, color=TEXT, font=MONO)
     text(s, 1.0, 5.15, 11.5, 0.4, "verify -> analyze · lint · gate · conform    transition -> advance",
@@ -238,7 +238,7 @@ def s_agents(n, tot):
 def s_start(n, tot):
     s = slide()
     kicker(s, "TWO MINUTES", "Get started", VIOLET)
-    box(s, 0.7, 2.2, 11.9, 3.3, RGBColor(0x17, 0x20, 0x33))
+    box(s, 0.7, 2.2, 11.9, 3.3, RGBColor(0x0B, 0x20, 0x26))
     lines = [("# existing service", MUTED), ("speccord init --service orders", EMERALD),
              ("speccord discover  &&  speccord base draft", TEXT), ("", TEXT),
              ("# new service", MUTED), ("speccord init --service giftcards --greenfield", EMERALD),

@@ -8,15 +8,15 @@ import html
 import os
 
 W, H = 1280, 720
-BG = "#0f172a"        # slate-900
-PANEL = "#1e293b"     # slate-800
-PANEL2 = "#172033"    # darker panel
-TEXT = "#e2e8f0"      # slate-200
-MUTED = "#94a3b8"     # slate-400
-SKY = "#38bdf8"
-EMERALD = "#34d399"
-VIOLET = "#a78bfa"
-AMBER = "#fbbf24"
+BG = "#07171a"        # slate-900
+PANEL = "#0f242a"     # slate-800
+PANEL2 = "#0b2026"    # darker panel
+TEXT = "#d6eef0"      # slate-200
+MUTED = "#8fb2b6"     # slate-400
+SKY = "#22d3ee"
+EMERALD = "#2dd4bf"
+VIOLET = "#5eead4"
+AMBER = "#67e8f9"
 FONT = "'Helvetica Neue', Helvetica, Arial, sans-serif"
 MONO = "'SFMono-Regular', Consolas, 'Liberation Mono', monospace"
 
