@@ -1,3 +1,14 @@
+<p align="center">
+  <img src="docs/banner.svg" alt="speccord — the spec is the contract your code is checked against" width="760">
+</p>
+
+<p align="center">
+  <a href="https://krishnachaitanyap.github.io/speccord/">Live demo</a> ·
+  <a href="USAGE.md">Usage guide</a> ·
+  <a href="#architecture">Architecture</a> ·
+  <a href="#integrate-with-ai-agents-claude-code-cursor-copilot">AI agents</a>
+</p>
+
 # speccord
 
 A spec-driven-development CLI that treats the spec as the **executable contract the code is
