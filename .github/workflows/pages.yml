@@ -29,11 +29,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Pages must be enabled once by hand: Settings → Pages → Source = "GitHub Actions".
+      # (The Actions token cannot create the Pages site itself.) After that, this
+      # step just reads the existing config and every push deploys automatically.
       - name: Configure Pages
         uses: actions/configure-pages@v5
-        with:
-          # Attempt to turn Pages on automatically (GitHub Actions source).
-          enablement: true
 
       - name: Upload demo as the site
         uses: actions/upload-pages-artifact@v3
