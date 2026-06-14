@@ -29,19 +29,33 @@ already established.
 
 ## Overview deck
 
-A slide walkthrough of what speccord is and how to use it. _(Download the editable deck:
-[speccord-deck.pptx](docs/speccord-deck.pptx). Slides are generated from
-[docs/slides/build_slides.py](docs/slides/build_slides.py).)_
+A slide walkthrough of what speccord is and how to use it.
 
-![Title](docs/slides/01-title.svg)
+![speccord — the spec is the contract your code is checked against](docs/slides/01-title.svg)
+
+<details>
+<summary><b>📊 View the full deck (9 slides)</b> &nbsp;·&nbsp; <a href="docs/speccord-deck.pptx">download .pptx</a></summary>
+
 ![The problem](docs/slides/02-problem.svg)
+
 ![Hybrid by construction](docs/slides/03-hybrid.svg)
+
 ![Three lineages, one CLI](docs/slides/04-lineages.svg)
+
 ![One knob: scale](docs/slides/05-scale.svg)
+
 ![Four phases to commands](docs/slides/06-phases.svg)
+
 ![Enforcement is code](docs/slides/07-enforce.svg)
+
 ![Plugs into your AI agent](docs/slides/08-agents.svg)
+
 ![Get started](docs/slides/09-start.svg)
+
+</details>
+
+> Slides are generated from [docs/slides/build_slides.py](docs/slides/build_slides.py); the editable
+> deck is [speccord-deck.pptx](docs/speccord-deck.pptx).
 
 ## Interactive demo
 
