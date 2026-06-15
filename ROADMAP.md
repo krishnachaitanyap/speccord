@@ -1,8 +1,8 @@
 # speccord roadmap
 
-Two workstreams to close the gap with the AI-native spec tools (spec-kit, Kiro, BMAD, Tessl):
-**(A) make discovery stack-agnostic**, and **(B) make agent integration best-in-class** — plus
-first-class **enterprise extensibility** so large orgs can teach speccord their own frameworks.
+Two workstreams to broaden speccord's reach: **(A) make discovery stack-agnostic** so it works on
+any codebase, and **(B) make agent integration first-class** — plus **enterprise extensibility** so
+large orgs can teach speccord their own frameworks.
 
 The enforcement spine (lifecycle, gates, `conform`, the actions layer, the MCP server) is already
 stack-neutral — it operates on a normalized `DiscoveryReport`. Only discovery needed to open up.

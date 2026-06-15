@@ -11,7 +11,7 @@
   <text x="120" y="395" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="23" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0"># new service</text>
   <text x="120" y="425" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="23" font-weight="normal" fill="#2dd4bf" text-anchor="start" opacity="1.0">speccord init --service giftcards --greenfield</text>
   <text x="120" y="455" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="23" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">speccord base new --intent &quot;...&quot;</text>
-  <text x="120" y="515" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="23" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0"># product / BMAD-style</text>
+  <text x="120" y="515" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="23" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0"># product workflow</text>
   <text x="120" y="545" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="23" font-weight="normal" fill="#2dd4bf" text-anchor="start" opacity="1.0">speccord init --pack product   &amp;&amp;   speccord capabilities</text>
   <text x="80" y="605" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0">Read USAGE.md for full tutorials  ·  every pass/fail decision is deterministic.</text>
   <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#8fb2b6" text-anchor="start" opacity="1.0">speccord</text>

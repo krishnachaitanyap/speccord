@@ -52,7 +52,7 @@ export interface SpeccordConfig {
     agentCommand?: string // receives the per-task prompt on stdin; e.g. "claude -p"
     testCommand?: string // run after each task to verify; e.g. "./mvnw test"
   }
-  // Directory for context-engineered story files (BMAD-style story-driven dev).
+  // Directory for context-engineered story files (story-driven dev).
   storiesDir: string
   // Product Requirements Document path (product-level, above the base spec).
   prdPath: string
@@ -77,7 +77,7 @@ export const BASELINE_PATH = '.speccord/baseline.json'
 export const CONFORMANCE_PATH = '.speccord/conformance-report.json'
 
 // Built-in presets: named overlays merged on top of the base config.
-// Mirrors spec-kit's "presets customize how it works" without a plugin loader.
+// Named, reusable config overlays so a team can standardize how speccord works.
 export const PRESETS: Record<string, Partial<SpeccordConfig>> = {
   // The default forward workflow: plan+tasks required before implementing.
   standard: {
@@ -100,7 +100,7 @@ export const PRESETS: Record<string, Partial<SpeccordConfig>> = {
 
 // Packs bundle a whole methodology profile (scale + preset). They are the
 // top-level "how do you want to work" knob; capabilities then derive from scale
-// unless overridden. Generalizes spec-kit presets toward BMAD-style modules.
+// unless overridden. A pack is the top-level "how do you want to work" bundle.
 export const PACKS: Record<string, Partial<SpeccordConfig> & {description: string}> = {
   'service-brownfield': {
     description: 'Existing service: discover the contract, then medium-scale feature work.',

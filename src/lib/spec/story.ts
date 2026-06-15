@@ -1,6 +1,6 @@
 import type {FrontMatter} from './model.js'
 
-// A story is the unit of story-driven development (BMAD). Its defining property
+// A story is the unit of story-driven development. Its defining property
 // is "context engineering": the story embeds everything a developer/agent needs
 // to implement it with no other document open — the relevant requirements, the
 // contract slice, dev notes, and testable acceptance criteria.

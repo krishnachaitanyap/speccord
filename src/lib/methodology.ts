@@ -1,9 +1,9 @@
-// The methodology layer fuses BMAD's scale-adaptive, phase/role-driven process
+// The methodology layer is speccord's scale-adaptive, phase/role-driven process
 // with speccord's deterministic spine. Everything here is configuration the user
 // controls: how much process (scale), which phases run, which roles exist, and
 // which capabilities are switched on.
 
-// BMAD's four phases, in order.
+// The four delivery phases, in order.
 export const PHASES = ['analysis', 'planning', 'solutioning', 'implementation'] as const
 export type Phase = (typeof PHASES)[number]
 
@@ -34,7 +34,7 @@ export interface Methodology {
 
 export type Capabilities = Record<Capability, boolean>
 
-// Named scales (BMAD-style "level"). Each implies a default phase set, role set,
+// Named scale levels. Each implies a default phase set, role set,
 // and capability profile — the user can override any piece explicitly.
 export interface ScaleLevel {
   level: number

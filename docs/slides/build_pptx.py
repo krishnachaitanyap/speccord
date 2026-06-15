@@ -83,9 +83,9 @@ def s_title(n, tot):
     text(s, 0, 0.8, SW, 1.7, "speccord", size=96, color=TEXT, bold=True, align=PP_ALIGN.CENTER)
     text(s, 0, 2.75, SW, 0.6, "the spec is the contract your code is checked against",
          size=22, color=SKY, align=PP_ALIGN.CENTER)
-    text(s, 0, 3.9, SW, 0.5, "A spec-driven development CLI — a configurable superset of",
+    text(s, 0, 3.9, SW, 0.5, "A spec-driven development CLI — keep code and spec in sync, both ways",
          size=18, color=MUTED, align=PP_ALIGN.CENTER)
-    labels = [("spec-kit · generative", SKY), ("speccord · enforcement", EMERALD), ("BMAD · agentic agile", VIOLET)]
+    labels = [("Extract", SKY), ("Generate", EMERALD), ("Enforce", VIOLET)]
     bx = (SW - 3 * 3.2 - 2 * 0.3) / 2
     for i, (lab, c) in enumerate(labels):
         x = bx + i * (3.2 + 0.3)
@@ -133,12 +133,12 @@ def s_hybrid(n, tot):
     footer(s, n, tot)
 
 
-def s_lineages(n, tot):
+def s_overview(n, tot):
     s = slide()
-    kicker(s, "THE SUPERSET", "Three lineages, one CLI", VIOLET)
-    rows = [("spec-kit", SKY, "Generative chain", "constitution -> spec -> plan -> tasks -> implement"),
-            ("speccord", EMERALD, "Extraction + enforcement", "discover · lifecycle gates · CI drift gate · conform"),
-            ("BMAD-METHOD", VIOLET, "Agentic agile", "role personas · scale-adaptive · PRD -> epics -> stories")]
+    kicker(s, "ONE TOOL, BOTH WAYS", "What speccord does", VIOLET)
+    rows = [("Extract", SKY, "code -> spec", "discover the as-is contract: API · data · events · security"),
+            ("Generate", EMERALD, "spec -> code", "constitution -> spec -> plan -> tasks -> story -> implement"),
+            ("Enforce", VIOLET, "keep them in sync", "lifecycle gates · CI drift gate · runtime conformance")]
     y = 2.2
     for name, c, role, detail in rows:
         box(s, 0.7, y, 11.9, 1.15, PANEL)
@@ -243,7 +243,7 @@ def s_start(n, tot):
              ("speccord discover  &&  speccord base draft", TEXT), ("", TEXT),
              ("# new service", MUTED), ("speccord init --service giftcards --greenfield", EMERALD),
              ('speccord base new --intent "..."', TEXT), ("", TEXT),
-             ("# product / BMAD-style", MUTED),
+             ("# product workflow", MUTED),
              ("speccord init --pack product  &&  speccord capabilities", EMERALD)]
     tb = s.shapes.add_textbox(Inches(1.0), Inches(2.45), Inches(11.3), Inches(2.9))
     tf = tb.text_frame
@@ -260,7 +260,7 @@ def s_start(n, tot):
     footer(s, n, tot)
 
 
-builders = [s_title, s_problem, s_hybrid, s_lineages, s_scale, s_phases, s_enforce, s_agents, s_start]
+builders = [s_title, s_problem, s_hybrid, s_overview, s_scale, s_phases, s_enforce, s_agents, s_start]
 
 
 def main():

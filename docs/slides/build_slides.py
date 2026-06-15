@@ -70,12 +70,12 @@ def slide_title(n, total):
     out.append(t(W / 2, 250, "speccord", size=120, fill=TEXT, weight="bold", anchor="middle"))
     out.append(t(W / 2, 320, "the spec is the contract your code is checked against",
                  size=30, fill=SKY, anchor="middle"))
-    out.append(t(W / 2, 430, "A spec-driven development CLI — a configurable superset of",
+    out.append(t(W / 2, 430, "A spec-driven development CLI — keep code and spec in sync, both ways",
                  size=24, fill=MUTED, anchor="middle"))
     y = 480
-    out.append(chip(W / 2 - 300, y, "spec-kit · generative", SKY))
-    out.append(chip(W / 2 - 70, y, "speccord · enforcement", EMERALD))
-    out.append(chip(W / 2 + 165, y, "BMAD · agentic agile", VIOLET))
+    out.append(chip(W / 2 - 235, y, "Extract", SKY))
+    out.append(chip(W / 2 - 55, y, "Generate", EMERALD))
+    out.append(chip(W / 2 + 140, y, "Enforce", VIOLET))
     out += footer(n, total)
     return out
 
@@ -122,12 +122,12 @@ def slide_hybrid(n, total):
     return out
 
 
-def slide_lineages(n, total):
-    out = header("Three lineages, one CLI", "THE SUPERSET", VIOLET)
+def slide_overview(n, total):
+    out = header("What speccord does", "ONE TOOL, BOTH WAYS", VIOLET)
     rows = [
-        ("spec-kit", SKY, "Generative chain", "constitution → spec → plan → tasks → implement"),
-        ("speccord", EMERALD, "Extraction + enforcement", "discover · lifecycle gates · CI drift gate · conform"),
-        ("BMAD-METHOD", VIOLET, "Agentic agile", "role personas · scale-adaptive · PRD → epics → stories"),
+        ("Extract", SKY, "code → spec", "discover the as-is contract: API · data · events · security"),
+        ("Generate", EMERALD, "spec → code", "constitution → spec → plan → tasks → story → implement"),
+        ("Enforce", VIOLET, "keep them in sync", "lifecycle gates · CI drift gate · runtime conformance"),
     ]
     y = 230
     for name, c, role, detail in rows:
@@ -251,7 +251,7 @@ def slide_start(n, total):
         ("speccord init --service giftcards --greenfield", EMERALD),
         ("speccord base new --intent \"...\"", TEXT),
         ("", TEXT),
-        ("# product / BMAD-style", MUTED),
+        ("# product workflow", MUTED),
         ("speccord init --pack product   &&   speccord capabilities", EMERALD),
     ]
     y = 275
@@ -292,7 +292,7 @@ SLIDES = [
     ("01-title", slide_title),
     ("02-problem", slide_problem),
     ("03-hybrid", slide_hybrid),
-    ("04-lineages", slide_lineages),
+    ("04-overview", slide_overview),
     ("05-scale", slide_scale),
     ("06-phases", slide_phases),
     ("07-enforce", slide_enforce),

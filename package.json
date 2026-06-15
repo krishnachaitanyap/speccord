@@ -44,7 +44,7 @@
         "description": "Create and manage feature specs"
       },
       "story": {
-        "description": "Context-engineered, story-driven development (BMAD-style)"
+        "description": "Context-engineered, story-driven development"
       }
     }
   }

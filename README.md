@@ -11,14 +11,15 @@
 
 # speccord
 
-A spec-driven-development CLI that treats the spec as the **executable contract the code is
-continuously checked against** — and is a **superset** of three lineages:
+A spec-driven-development CLI that treats the spec as the **executable contract your code is
+continuously checked against.** speccord works in **both directions** and keeps the two in sync:
 
-- **spec-kit** (generative SDD): constitution → spec → plan → tasks → implement.
-- **speccord** (deterministic extraction & enforcement): discover the as-is contract, lifecycle gates,
-  CI drift gate, runtime conformance.
-- **BMAD-METHOD** (agentic agile): role personas (analyst/PM/UX/architect/SM/dev/QA/PO), a
-  scale-adaptive process, PRD → epics → context-engineered stories, and story-driven dev.
+- **Extract** — discover the as-is contract of an existing service (API, data, events, security) and
+  turn it into a spec the code is measured against.
+- **Generate** — go the other way for new work: constitution → spec → plan → tasks → implementation,
+  with role personas and context-engineered stories.
+- **Enforce** — a lifecycle state machine with entry gates, a CI **drift gate**, and runtime
+  **conformance** that fail the build when code and spec disagree.
 
 You pick **how much process** with one number (the *scale*); everything else — which phases run,
 which roles exist, which capabilities switch on — derives from it and is individually overridable.
@@ -28,15 +29,16 @@ ANALYSIS            PLANNING              SOLUTIONING            IMPLEMENTATION
 brief (analyst)     prd (pm)              base spec (architect)  story new (sm)
 research            ux                    plan / epics+stories   implement (dev)
 discover ───────────────────────────────► base spec             review (qa)
-(brownfield)                                                     advance · gate · conform
+(existing service)                                               advance · gate · conform
 ```
 
-Hybrid by construction: **facts and decisions are deterministic** (parsers, diffs, gates, the
+**Hybrid by construction:** facts and decisions are **deterministic** (parsers, diffs, gates, the
 lifecycle, drift — all code). **Only prose is model-written**, always grounded in facts the tool
-already established.
+already established — so the model never invents an endpoint, table, or scope, and pass/fail is never
+a prompt.
 
-> New here? Read **[USAGE.md](USAGE.md)** — concepts plus full tutorials (brownfield, greenfield, and
-> a product/BMAD-style run).
+> New here? Read **[USAGE.md](USAGE.md)** — concepts plus full tutorials (existing-service, new-service,
+> and a product run).
 
 ## Overview deck
 
@@ -51,7 +53,7 @@ A slide walkthrough of what speccord is and how to use it.
 
 ![Hybrid by construction](docs/slides/03-hybrid.svg)
 
-![Three lineages, one CLI](docs/slides/04-lineages.svg)
+![What speccord does](docs/slides/04-overview.svg)
 
 ![One knob: scale](docs/slides/05-scale.svg)
 
@@ -135,7 +137,7 @@ speccord init --service giftcards --greenfield
 speccord base new --intent "Issue and redeem gift cards; owns balances; called by checkout"
 ```
 
-### Product / BMAD-style (scale 3–4)
+### Product workflow (scale 3–4)
 
 ```bash
 speccord init --service giftcards --pack product
@@ -167,7 +169,7 @@ speccord conform                      # running code drifted from baseline → f
 speccord conform --update-baseline    # accept current surface (after the spec documents it)
 ```
 
-## Agent personas (BMAD)
+## Agent personas
 
 Each role is an inspectable prompt, not a hidden chat. `agent list` shows which are enabled at your
 scale; run any over an input:
@@ -383,4 +385,4 @@ src/
 Anything that decides pass/fail — gates, the lifecycle, drift detection, analysis, capability
 resolution — is **code, not a prompt**. Personas and drafters only write prose around facts the tool
 has already established. That is what keeps the spec trustworthy as the contract the code is
-continuously checked against, no matter how much agentic process you layer on top.
+continuously checked against, no matter how much agent automation you layer on top.

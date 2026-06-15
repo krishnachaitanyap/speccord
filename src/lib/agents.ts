@@ -2,7 +2,7 @@ import {complete, llmEnabled} from './llm/anthropic.js'
 import type {Role} from './methodology.js'
 
 // An agent persona: a named role with a system prompt and a one-line job. This
-// is BMAD's "agents as expert collaborators" idea expressed for a CLI — each
+// expresses each role as an inspectable prompt (not a hidden chat) — each
 // persona is a deterministic, inspectable prompt rather than a hidden chat.
 export interface Persona {
   role: Role

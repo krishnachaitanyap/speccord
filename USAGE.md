@@ -2,7 +2,7 @@
 
 A practical, end-to-end guide. For a fast overview see the [README](README.md). This document
 explains the mental model, the one knob you actually tune (**scale**), then walks three complete
-tutorials — **brownfield**, **greenfield**, and a **product/BMAD-style** run — followed by reference
+tutorials — **brownfield**, **greenfield**, and a **product** run — followed by reference
 material and troubleshooting.
 
 ---
@@ -16,7 +16,7 @@ material and troubleshooting.
 5. [Agent personas](#5-agent-personas)
 6. [Tutorial A — Brownfield: spec an existing service](#6-tutorial-a--brownfield-spec-an-existing-service)
 7. [Tutorial B — Greenfield: build a new service from a spec](#7-tutorial-b--greenfield-build-a-new-service-from-a-spec)
-8. [Tutorial C — Product/BMAD: brief → PRD → stories → ship](#8-tutorial-c--productbmad-brief--prd--stories--ship)
+8. [Tutorial C — Product: brief → PRD → stories → ship](#8-tutorial-c--product-brief--prd--stories--ship)
 9. [The feature workflow in depth](#9-the-feature-workflow-in-depth)
 10. [Enforcement: lint, gates, the lifecycle, conform](#10-enforcement-lint-gates-the-lifecycle-conform)
 11. [Configuration reference](#11-configuration-reference)
@@ -31,13 +31,14 @@ material and troubleshooting.
 ## 1. The mental model
 
 speccord keeps one promise: **the spec is the contract the code is checked against, and it never
-silently falls out of sync.** It fuses three lineages into one CLI:
+silently falls out of sync.** It does three things and keeps them in sync:
 
-- **spec-kit** — the generative chain: constitution → spec → plan → tasks → implement.
-- **speccord** — the deterministic spine: discover existing code, lifecycle gates, CI drift gate,
-  runtime conformance.
-- **BMAD-METHOD** — agentic agile: role personas, a scale-adaptive process, and a PRD → epics →
-  context-engineered stories hierarchy with story-driven development.
+- **Extract (code → spec)** — discover the as-is contract of an existing service: API, data, events,
+  security.
+- **Generate (spec → code)** — for new work: constitution → spec → plan → tasks → story →
+  implementation, with role personas and context-engineered stories.
+- **Enforce** — a lifecycle state machine with entry gates, a CI drift gate, and runtime conformance
+  that fail the build when code and spec disagree.
 
 It is "hybrid by construction":
 
@@ -46,7 +47,7 @@ It is "hybrid by construction":
 - **Only prose is model-written.** Personas and drafters write narrative around facts the tool
   already established; they never invent an endpoint, table, or scope.
 
-The four phases (from BMAD) and where each command lives:
+The four delivery phases and where each command lives:
 
 ```
 ANALYSIS            PLANNING              SOLUTIONING            IMPLEMENTATION
@@ -178,7 +179,7 @@ Markers (checked by `lint`/`analyze`): `FR-1`, `AC-1: Given/When/Then [test: Som
 
 ## 5. Agent personas
 
-BMAD's "agents as expert collaborators," expressed for a CLI: each role is an **inspectable prompt**,
+Each role is an **inspectable prompt**,
 not a hidden chat. The deterministic commands (`plan`, `tasks`, `story new`, `prd`, `review`) already
 invoke the right persona internally; `agent` lets you run any persona ad hoc.
 
@@ -268,7 +269,7 @@ From here it behaves like any brownfield service.
 
 ---
 
-## 8. Tutorial C — Product/BMAD: brief → PRD → stories → ship
+## 8. Tutorial C — Product: brief → PRD → stories → ship
 
 **Goal:** a larger initiative where you want analysis, product requirements, and story-driven dev.
 Use scale 3+ (the `product` pack).
@@ -313,7 +314,7 @@ is self-contained.
 
 A **story** embeds everything needed to implement it (the requirement, the contract slice, dev notes,
 and Given/When/Then ACs linked to tests) — so a developer or coding agent needs no other document
-open. That's BMAD's context engineering, grounded in your speccord contract.
+open. That is the point of context-engineered stories, grounded in your speccord contract.
 
 ---
 
