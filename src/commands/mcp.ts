@@ -1,5 +1,5 @@
 import {Command} from '@oclif/core'
-import {McpServer} from '@modelcontextprotocol/sdk/server/mcp.js'
+import {McpServer, ResourceTemplate} from '@modelcontextprotocol/sdk/server/mcp.js'
 import {StdioServerTransport} from '@modelcontextprotocol/sdk/server/stdio.js'
 import {z} from 'zod'
 import {loadConfig} from '../lib/config.js'
@@ -10,9 +10,12 @@ import {
   actionDiscover,
   actionGate,
   actionLint,
+  actionMarkTask,
+  actionNextAction,
   actionStatus,
   actionStories,
   actionStoryNext,
+  actionStoryTasks,
   actionStoryAdvance,
   actionAdvance,
   actionUpdateBaseline,
@@ -164,6 +167,121 @@ export default class Mcp extends Command {
         inputSchema: {root: z.string().optional()},
       },
       ({root}) => guard(async () => ok(await actionUpdateBaseline(cwd, root ?? '.'))),
+    )
+
+    // ---- new tools: autonomy + the story dev loop ----
+    server.registerTool(
+      'speccord_next_action',
+      {description: 'What to do next — the single most actionable workflow step given the current state.'},
+      () => guard(async () => ok(await actionNextAction(cwd))),
+    )
+    server.registerTool(
+      'speccord_story_tasks',
+      {
+        description: "Get a story's tasks, each with a self-contained dev prompt ready to implement.",
+        inputSchema: {story: z.string().describe('story id (e.g. STORY-3) or repo-relative path')},
+      },
+      ({story}) => guard(async () => ok(await actionStoryTasks(cwd, story))),
+    )
+    server.registerTool(
+      'speccord_mark_task',
+      {
+        description: 'Mark a story task done/undone. Moves the story to Review when all tasks are done.',
+        inputSchema: {story: z.string(), taskId: z.string().describe('e.g. T-2'), done: z.boolean().optional()},
+      },
+      ({story, taskId, done}) => guard(async () => ok(await actionMarkTask(cwd, story, taskId, done ?? true))),
+    )
+
+    // ---- resources: canonical ground truth the agent can read/subscribe to ----
+    server.registerResource(
+      'base-spec',
+      'speccord://base-spec',
+      {title: 'Base spec', description: 'The technical contract the code is checked against', mimeType: 'text/markdown'},
+      async (uri) => {
+        const cfg = await loadConfig(cwd)
+        const txt = cfg ? await readFileSafe(cwd, cfg.baseSpec) : null
+        return {contents: [{uri: uri.href, text: txt ?? '(no base spec yet)'}]}
+      },
+    )
+    server.registerResource(
+      'constitution',
+      'speccord://constitution',
+      {title: 'Constitution', description: 'Non-negotiable project principles (P-n)', mimeType: 'text/markdown'},
+      async (uri) => {
+        const cfg = await loadConfig(cwd)
+        const txt = cfg ? await readFileSafe(cwd, cfg.constitution) : null
+        return {contents: [{uri: uri.href, text: txt ?? '(no constitution yet)'}]}
+      },
+    )
+    server.registerResource(
+      'capabilities',
+      'speccord://capabilities',
+      {title: 'Capabilities', description: 'Configured methodology: scale, phases, roles, capabilities', mimeType: 'application/json'},
+      async (uri) => ({contents: [{uri: uri.href, text: JSON.stringify(await actionCapabilities(cwd), null, 2)}]}),
+    )
+    server.registerResource(
+      'story',
+      new ResourceTemplate('speccord://story/{id}', {
+        list: async () => ({
+          resources: (await actionStories(cwd)).map((r) => ({
+            name: r.id,
+            uri: `speccord://story/${r.id}`,
+            description: `${r.status} — ${r.title}`,
+          })),
+        }),
+      }),
+      {title: 'Story', description: 'A context-engineered story by id'},
+      async (uri, variables) => {
+        const id = String(variables.id)
+        const row = (await actionStories(cwd)).find((r) => r.id === id)
+        const txt = row ? await readFileSafe(cwd, row.file.replace(/^\.\//, '')) : null
+        return {contents: [{uri: uri.href, text: txt ?? `story ${id} not found`}]}
+      },
+    )
+
+    // ---- prompts: slash-command-style flows ----
+    server.registerPrompt(
+      'implement-next-story',
+      {title: 'Implement the next story', description: 'Fetch the next pending story and implement it against the spec'},
+      async () => {
+        const next = await actionStoryNext(cwd)
+        if (!next) return {messages: [{role: 'user', content: {type: 'text', text: 'No pending stories.'}}]}
+        const t = await actionStoryTasks(cwd, next.id)
+        const pending = t.tasks.filter((x) => !x.done)
+        const text =
+          `Implement story ${t.id}: ${t.title}. Work the tasks in order; after each, run its tests and ` +
+          `call speccord_mark_task. Stay inside the contract.\n\n` +
+          pending.map((x) => `## ${x.id} — ${x.title}\n${x.prompt}`).join('\n\n')
+        return {messages: [{role: 'user', content: {type: 'text', text}}]}
+      },
+    )
+    server.registerPrompt(
+      'review-changes',
+      {title: 'Review changes against the spec', description: 'Run the gates and fix what they report'},
+      async () => ({
+        messages: [
+          {
+            role: 'user',
+            content: {
+              type: 'text',
+              text:
+                'Run speccord_lint, speccord_gate, speccord_conform, and speccord_analyze on the changed spec. ' +
+                'For each failure, fix the code or the spec so they agree — never bypass a gate. Report what you changed.',
+            },
+          },
+        ],
+      }),
+    )
+    server.registerPrompt(
+      'fix-drift',
+      {title: 'Fix spec↔code drift', description: 'Check runtime conformance and reconcile any drift'},
+      async () => {
+        const r = await actionConform(cwd)
+        const text = r.conformant
+          ? 'speccord_conform reports CONFORMANT — no drift to fix.'
+          : `speccord_conform reports drift:\n${JSON.stringify(r.drift, null, 2)}\n\nFor each item, either update the base spec to document the change, or revert the code. Re-run speccord_conform until clean.`
+        return {messages: [{role: 'user', content: {type: 'text', text}}]}
+      },
     )
 
     // stdio: stdout is the protocol channel — diagnostics go to stderr only.

@@ -209,13 +209,18 @@ What it writes:
 | Cursor | `.cursor/mcp.json` | `.cursor/rules/speccord.mdc` |
 | Copilot / VS Code | `.vscode/mcp.json` | `.github/copilot-instructions.md` |
 
-The MCP server (`speccord mcp`, stdio) exposes speccord as native agent tools:
+The MCP server (`speccord mcp`, stdio) exposes speccord as native agent tools, resources, and prompts:
 
 - **read** (ground truth): `speccord_get_base_spec`, `speccord_get_constitution`, `speccord_get_file`,
   `speccord_capabilities`, `speccord_status`, `speccord_stories`, `speccord_story_next`
 - **verify** (the gates): `speccord_analyze`, `speccord_lint`, `speccord_gate`, `speccord_conform`,
   `speccord_discover`
 - **transition**: `speccord_advance`, `speccord_story_advance`, `speccord_update_baseline`
+- **drive**: `speccord_next_action` (the single next step), `speccord_story_tasks` (grounded per-task
+  dev prompts), `speccord_mark_task` (check off a task → moves the story to Review)
+- **resources**: `speccord://base-spec`, `speccord://constitution`, `speccord://capabilities`,
+  `speccord://story/{id}` — canonical context the agent reads directly
+- **prompts**: `implement-next-story`, `review-changes`, `fix-drift` — one-shot workflow flows
 
 The loop it enforces: the agent reads the spec, writes code, calls the verify tools, fixes what they
 report, and only then advances the lifecycle. Every verifier also has a `--json` flag for agents/CI

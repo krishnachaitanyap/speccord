@@ -7,8 +7,10 @@ import {lintFeatureSpec, type LintIssue} from './spec/templates.js'
 import {analyzeArtifacts} from './spec/analyze.js'
 import {loadConstitution} from './spec/constitution.js'
 import {loadFeature, gateContextFor} from './spec/feature.js'
-import {TRANSITIONS, gateFor, type SpecStatus, type AnalysisFinding} from './spec/model.js'
-import {STORY_TRANSITIONS, type StoryFrontMatter, type StoryStatus} from './spec/story.js'
+import {parseTasks, setTaskDone} from './spec/tasks.js'
+import {storyTaskPrompt, STORY_TRANSITIONS, type StoryFrontMatter, type StoryStatus} from './spec/story.js'
+import {getPersona} from './agents.js'
+import {TRANSITIONS, gateFor, type SpecStatus, type AnalysisFinding, type TaskItem} from './spec/model.js'
 import {discover} from './discovery/index.js'
 import {structuralDrift, runCheck, type ConformanceReport} from './conformance/index.js'
 import {runGate, type GateResult} from './gate.js'
@@ -256,4 +258,131 @@ export async function actionStoryAdvance(cwd: string, path: string, to: string):
   fm.updated = new Date().toISOString().slice(0, 10)
   await writeSpec(join(cwd, path), story)
   return {ok: true, from: current, to, problems: []}
+}
+
+// Resolve a story by id (STORY-3) or by repo-relative path.
+async function resolveStoryPath(cwd: string, ref: string): Promise<string | null> {
+  if (ref.endsWith('.md')) return join(cwd, ref.replace(/^\.\//, ''))
+  const row = (await actionStories(cwd)).find((r) => r.id === ref)
+  return row ? join(cwd, row.file.replace(/^\.\//, '')) : null
+}
+
+async function readMaybeAbs(p: string): Promise<string> {
+  try {
+    return await readFile(p, 'utf8')
+  } catch {
+    return ''
+  }
+}
+
+export interface StoryTask extends TaskItem {
+  prompt: string // grounded dev prompt for this task
+}
+export interface StoryTasksResult {
+  id: string
+  title: string
+  status: string
+  tasks: StoryTask[]
+}
+
+// Return a story's tasks, each with a self-contained dev prompt the agent can
+// implement directly (the MCP equivalent of the story dev loop).
+export async function actionStoryTasks(cwd: string, ref: string): Promise<StoryTasksResult> {
+  const path = await resolveStoryPath(cwd, ref)
+  if (!path) throw new Error(`story not found: ${ref}`)
+  const cfg = await loadConfig(cwd)
+  const story = await readSpec(path)
+  const fm = story.frontMatter as StoryFrontMatter
+  const constitution = cfg ? (await loadConstitution(join(cwd, cfg.constitution))) || '(none)' : '(none)'
+  const baseSpec = cfg ? (await readMaybeAbs(join(cwd, cfg.baseSpec))) || '(none)' : '(none)'
+  const devSystem = getPersona('dev').system
+  const tasks = parseTasks(story.body).map((task) => ({
+    ...task,
+    prompt: storyTaskPrompt({
+      devSystem,
+      constitution,
+      baseSpec,
+      id: String(fm.id ?? ''),
+      title: String(fm.title ?? ''),
+      body: story.body,
+      task,
+    }),
+  }))
+  return {id: String(fm.id ?? ''), title: String(fm.title ?? ''), status: String(fm.storyStatus ?? 'Draft'), tasks}
+}
+
+export interface MarkTaskResult {
+  taskId: string
+  done: boolean
+  remaining: number
+  status: string
+}
+
+// Check/uncheck a story task. When the last task is done, move the story to Review.
+export async function actionMarkTask(
+  cwd: string,
+  ref: string,
+  taskId: string,
+  done = true,
+): Promise<MarkTaskResult> {
+  const path = await resolveStoryPath(cwd, ref)
+  if (!path) throw new Error(`story not found: ${ref}`)
+  const story = await readSpec(path)
+  const fm = story.frontMatter as StoryFrontMatter
+  story.body = setTaskDone(story.body, taskId, done)
+  const remaining = parseTasks(story.body).filter((t) => !t.done).length
+  if (remaining === 0 && fm.storyStatus !== 'Done') fm.storyStatus = 'Review'
+  else if ((fm.storyStatus ?? 'Draft') === 'Draft' || fm.storyStatus === 'Ready') fm.storyStatus = 'In Progress'
+  fm.updated = new Date().toISOString().slice(0, 10)
+  await writeSpec(path, story)
+  return {taskId, done, remaining, status: String(fm.storyStatus)}
+}
+
+export interface NextAction {
+  action: string
+  command: string
+  reason: string
+  ref?: string
+}
+
+// Heuristic "what should I do next?" — drives an agent through the workflow from
+// one entry point. Deterministic: based on config + artifact state, not a model.
+export async function actionNextAction(cwd: string): Promise<NextAction> {
+  const cfg = await loadConfig(cwd)
+  if (!cfg) return {action: 'init', command: 'speccord init', reason: 'no speccord.config.yaml found'}
+
+  const baseSpec = await readFileSafe(cwd, cfg.baseSpec)
+  if (!baseSpec)
+    return {
+      action: 'create-base-spec',
+      command: 'speccord discover && speccord base draft   (existing service)   |   speccord base new --intent "..."   (new service)',
+      reason: 'no base spec yet — establish the contract first',
+    }
+
+  // Story-driven work takes priority when stories exist.
+  const next = await actionStoryNext(cwd)
+  if (next) {
+    const map: Record<string, NextAction> = {
+      Draft: {action: 'refine-story', command: `speccord story advance ${next.file} --to Ready`, reason: `${next.id} is a draft`, ref: next.id},
+      Ready: {action: 'implement-story', command: `speccord story implement ${next.file}`, reason: `${next.id} is ready to build`, ref: next.id},
+      'In Progress': {action: 'continue-story', command: `speccord story implement ${next.file}`, reason: `${next.id} is in progress`, ref: next.id},
+      Review: {action: 'review-story', command: `speccord review ${next.file} --lens edge-cases`, reason: `${next.id} awaits QA review`, ref: next.id},
+    }
+    return map[next.status] ?? {action: 'implement-story', command: `speccord story implement ${next.file}`, reason: `work ${next.id}`, ref: next.id}
+  }
+
+  // Otherwise advance the most actionable feature spec.
+  const rows = await actionStatus(cwd, cfg)
+  const feature = rows.find((r) => ['Draft', 'In Review', 'Approved'].includes(r.status))
+  if (feature) {
+    const byStatus: Record<string, NextAction> = {
+      Draft: {action: 'plan-feature', command: `speccord clarify ${feature.file} && speccord plan ${feature.file} && speccord tasks ${feature.file}`, reason: `${feature.id} needs a plan + tasks`, ref: feature.id},
+      'In Review': {action: 'approve-feature', command: `speccord analyze ${feature.file} && speccord advance ${feature.file} --to Approved`, reason: `${feature.id} is in review`, ref: feature.id},
+      Approved: {action: 'start-implementation', command: `speccord advance ${feature.file} --to "In Implementation"`, reason: `${feature.id} is approved`, ref: feature.id},
+    }
+    return byStatus[feature.status]
+  }
+
+  // Nothing pending — verify the contract still holds.
+  return {action: 'verify', command: 'speccord gate && speccord conform', reason: 'no open work — check the spec↔code contract holds'}
 }

@@ -1,4 +1,4 @@
-import type {FrontMatter} from './model.js'
+import type {FrontMatter, TaskItem} from './model.js'
 
 // A story is the unit of story-driven development. Its defining property
 // is "context engineering": the story embeds everything a developer/agent needs
@@ -51,6 +51,27 @@ export function storyPlaceholder(): string {
 ## Tasks
 - [ ] T-1 ...
 `
+}
+
+// Build the self-contained dev prompt for a single story task. The story is
+// already context-engineered, so the prompt is mostly the story plus guardrails.
+// `devSystem` is passed in (the dev persona) to keep this lib free of LLM deps.
+export function storyTaskPrompt(args: {
+  devSystem: string
+  constitution: string
+  baseSpec: string
+  id: string
+  title: string
+  body: string
+  task: TaskItem
+}): string {
+  const {task} = args
+  return (
+    `${args.devSystem}\n\n# Constitution\n${args.constitution}\n\n# Base spec (contract)\n${args.baseSpec}\n\n` +
+    `# Story ${args.id}: ${args.title}\n${args.body}\n\n---\n` +
+    `Implement ONLY task ${task.id}: ${task.title}. ${task.files.length ? `Files: ${task.files.join(', ')}.` : ''} ` +
+    `Make its acceptance-criterion tests pass; do not exceed the task scope.`
+  )
 }
 
 export function storyFrontMatter(args: {
