@@ -232,6 +232,7 @@ that shell out instead of using MCP. See [USAGE.md §15](USAGE.md#15-integrating
 | Phase | Commands |
 |---|---|
 | Analysis | `brief`, `discover` (brownfield) |
+| Onboarding | `onboard` (draft specs from PDF · Word · Confluence · Jira · URLs · markdown) |
 | Planning | `prd`, `base draft` / `base new`, `feature new`, `clarify` |
 | Solutioning | `plan`, `agent architect` (epics) |
 | Implementation | `story new\|list\|next\|advance\|implement`, `tasks`, `implement`, `review`, `agent dev` |

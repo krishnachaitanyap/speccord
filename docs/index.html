@@ -145,6 +145,7 @@
       <a class="nav-link" data-page="new-service" href="#new-service">New service</a>
       <a class="nav-link" data-page="feature-workflow" href="#feature-workflow">Feature workflow</a>
       <a class="nav-link" data-page="story-dev" href="#story-dev">Story-driven dev</a>
+      <a class="nav-link" data-page="onboarding" href="#onboarding">Onboard from docs</a>
     </div>
     <div class="group"><h4>AI agents</h4>
       <a class="nav-link" data-page="mcp" href="#mcp">MCP server</a>
@@ -377,6 +378,56 @@ export SPECCORD_MODEL=claude-sonnet-4-6   <span class="c-comment"># optional; th
 <span class="c-cmd">speccord</span> story implement &lt;file&gt;     <span class="c-comment"># prompt pack, or --execute to drive an agent + tests</span></code></pre>
       <p>A story embeds the requirement, the contract slice, dev notes, and Given/When/Then acceptance criteria linked to tests. <code>story implement --execute</code> runs the agent task-by-task, runs the tests after each, and moves the story to <b>Review</b> when all pass.</p>
       <div class="pager"><a href="#feature-workflow"><small>Previous</small>← Feature workflow</a>
+        <a class="nx" href="#onboarding"><small>Next</small>Onboard from docs →</a></div>
+    </section>
+
+    <!-- ONBOARDING -->
+    <section class="page" data-page="onboarding">
+      <div class="crumb">Workflows</div>
+      <h1>Onboard from existing docs</h1>
+      <p class="lead">Bootstrap a spec from the knowledge you already have — PDF, Word, Confluence, Jira, URLs, markdown.</p>
+      <p>The <code>onboard</code> wizard ingests existing material and has the right persona <b>draft</b> a brief, PRD, constitution, base-spec prose, or feature spec from it. The draft is always for human review — sources are untrusted input, so nothing becomes authoritative until you confirm it (and code-level facts still come from <code>discover</code>).</p>
+
+      <div class="cmd-h"><h3>onboard</h3><span class="sig">speccord onboard --into &lt;target&gt; --from &lt;source&gt; [--from …] [--dry-run] [--no-llm]</span></div>
+      <div class="tabs"><div class="tablist">
+        <button class="tab active">Examples</button><button class="tab">Strategies</button><button class="tab">Generated draft</button></div><div class="panels">
+        <div class="panel active"><pre><code><span class="c-comment"># a vision PDF + a wiki page → a product brief</span>
+<span class="c-cmd">speccord</span> onboard --into brief --from docs/vision.pdf --from https://wiki/overview
+
+<span class="c-comment"># Jira epics → a PRD with prioritized epics</span>
+<span class="c-cmd">speccord</span> onboard --into prd --from jira:"project = ORD AND type = Epic"
+
+<span class="c-comment"># a Confluence standards page + a folder → a constitution</span>
+<span class="c-cmd">speccord</span> onboard --into constitution --from confluence:123456 --from eng-standards/
+
+<span class="c-cmd">speccord</span> onboard --list        <span class="c-comment"># show supported strategies</span></code></pre></div>
+        <div class="panel"><pre><code>text        Markdown / plain-text (.md, .markdown, .txt)
+html        Local HTML (.html, .htm)
+url         Any web page (https://…)
+pdf         PDF documents          (npm i pdf-parse)
+docx        Word documents         (npm i mammoth)
+confluence  confluence:&lt;pageId&gt;    (env CONFLUENCE_BASE_URL, CONFLUENCE_TOKEN)
+jira        jira:&lt;KEY&gt; | jira:"&lt;JQL&gt;"  (env JIRA_BASE_URL, JIRA_EMAIL, JIRA_TOKEN)
++ custom    knowledge.plugins: ["./my-importer.js"]   (Importer[])</code></pre></div>
+        <div class="panel"><pre><code>&lt;!-- DRAFT from knowledge onboarding — REVIEW before use.
+     Sources:
+       - vision.pdf (docs/vision.pdf)
+       - Overview (https://wiki/overview)
+--&gt;
+
+# Product brief (draft)
+
+## Problem
+Customers can't cancel an order after checkout without contacting support …
+
+## Goals &amp; success metrics
+- Self-serve cancellation within 30 min  [NEEDS CLARIFICATION: SLA?]
+…</code></pre></div>
+      </div></div>
+
+      <p><b>Targets</b> (<code>--into</code>): <code>brief</code> (analyst), <code>prd</code> (PM), <code>constitution</code> (architect), <code>base</code> (architect — prose only), <code>feature</code> (PM). Drafts land under <code>specs/onboarding/</code> so they never clobber real specs.</p>
+      <div class="callout warn"><span class="i">Invariant</span><div>Onboarding is model-drafted from source docs. Confirm every fact before it becomes the contract — the deterministic facts still come from <code>discover</code>, and the gates still decide pass/fail.</div></div>
+      <div class="pager"><a href="#story-dev"><small>Previous</small>← Story-driven dev</a>
         <a class="nx" href="#mcp"><small>Next</small>MCP server →</a></div>
     </section>
 
@@ -396,7 +447,7 @@ export SPECCORD_MODEL=claude-sonnet-4-6   <span class="c-comment"># optional; th
         <li><b>prompts</b>: <code>implement-next-story</code>, <code>review-changes</code>, <code>fix-drift</code></li>
       </ul>
       <div class="callout tip"><span class="i">The loop</span><div>The agent reads the spec, writes code, calls the verify tools, fixes what they report, and only then advances the lifecycle. Pass/fail stays deterministic.</div></div>
-      <div class="pager"><a href="#story-dev"><small>Previous</small>← Story-driven dev</a>
+      <div class="pager"><a href="#onboarding"><small>Previous</small>← Onboard from docs</a>
         <a class="nx" href="#agent-rules"><small>Next</small>Wiring up agents →</a></div>
     </section>
 
@@ -427,6 +478,7 @@ export SPECCORD_MODEL=claude-sonnet-4-6   <span class="c-comment"># optional; th
       <table>
         <tr><th>Phase</th><th>Commands</th></tr>
         <tr><td>Analysis</td><td><code>brief</code>, <code>discover</code></td></tr>
+      <tr><td>Onboarding</td><td><code>onboard</code> (PDF · Word · Confluence · Jira · URL · md)</td></tr>
         <tr><td>Planning</td><td><code>prd</code>, <code>base draft|new</code>, <code>feature new</code>, <code>clarify</code></td></tr>
         <tr><td>Solutioning</td><td><code>plan</code>, <code>agent architect</code></td></tr>
         <tr><td>Implementation</td><td><code>story new|list|next|advance|implement</code>, <code>tasks</code>, <code>implement</code>, <code>review</code></td></tr>

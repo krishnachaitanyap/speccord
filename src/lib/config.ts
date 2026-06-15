@@ -20,6 +20,14 @@ export interface ConformanceCheck {
   description?: string
 }
 
+// Knowledge onboarding: where to pull existing docs from (creds come from env).
+export interface KnowledgeConfig {
+  maxChars?: number // truncate gathered text fed to the persona
+  confluence?: {baseUrl?: string}
+  jira?: {baseUrl?: string}
+  plugins?: string[] // JS modules exporting Importer[]
+}
+
 // How discovery finds the contract surface. The enterprise extensibility lives
 // here: disable builtins, declare custom providers for proprietary frameworks,
 // or load code plugins — all without forking speccord.
@@ -40,6 +48,8 @@ export interface SpeccordConfig {
   contractSurface: string[]
   // How the codebase is discovered (providers, custom rules, plugins).
   discovery?: DiscoveryConfig
+  // Knowledge onboarding sources (PDF/Confluence/Word/Jira/URL/…).
+  knowledge?: KnowledgeConfig
   // Customization knobs (a preset is just a named bundle of these).
   customization: GatePolicy
   // Runtime conformance: structural drift vs the baseline + external checks.
@@ -150,6 +160,7 @@ export function defaultConfig(service: string, scale = 2): SpeccordConfig {
       '**/*SecurityConfig*.java',
     ],
     discovery: {autoDetect: true, disable: [], custom: [], plugins: []},
+    knowledge: {maxChars: 24000},
     customization: {requirePlanForImplementation: true},
     conformance: {
       checkStructuralDrift: true,
@@ -177,6 +188,7 @@ function mergeConfig(base: SpeccordConfig, overlay: Partial<SpeccordConfig>): Sp
     implement: {...base.implement, ...(overlay.implement ?? {})},
     agents: {...base.agents, ...(overlay.agents ?? {})},
     discovery: {...base.discovery, ...(overlay.discovery ?? {})},
+    knowledge: {...base.knowledge, ...(overlay.knowledge ?? {})},
     methodology: m
       ? {
           scale: m.scale ?? base.methodology.scale,
