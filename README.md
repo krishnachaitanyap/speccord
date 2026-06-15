@@ -371,7 +371,7 @@ src/
     methodology.ts # scale levels, phases, roles, capability model (the config layer)
     agents.ts      # agent persona registry + runPersona()
     config.ts      # config, packs, presets, capability resolution
-    discovery/     # deterministic source parsers (the extractive engine)
+    discovery/     # provider registry: builtin + custom + plugin parsers (stack-agnostic)
     conformance/   # structural drift diff + external-check runner
     llm/           # Anthropic hybrid drafting
     spec/          # model, lifecycle+gates, front-matter, templates, constitution,

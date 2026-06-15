@@ -153,7 +153,7 @@ export async function actionConform(
   }
   const drift =
     baseline && (cfg?.conformance.checkStructuralDrift ?? true)
-      ? structuralDrift(baseline, await discover(root, cfg?.service))
+      ? structuralDrift(baseline, await discover(root, cfg?.service, cfg?.discovery))
       : []
   const checks =
     opts.skipChecks || !cfg ? [] : await Promise.all(cfg.conformance.checks.map((c) => runCheck(c, cwd)))
@@ -168,12 +168,12 @@ export async function actionConform(
 
 export async function actionDiscover(cwd: string, root = '.'): Promise<DiscoveryReport> {
   const cfg = await loadConfig(cwd)
-  return discover(root, cfg?.service)
+  return discover(root, cfg?.service, cfg?.discovery)
 }
 
 export async function actionUpdateBaseline(cwd: string, root = '.'): Promise<DiscoveryReport> {
   const cfg = await loadConfig(cwd)
-  const current = await discover(root, cfg?.service)
+  const current = await discover(root, cfg?.service, cfg?.discovery)
   await ensureDir(join(cwd, SPECCORD_DIR))
   await writeFile(join(cwd, BASELINE_PATH), JSON.stringify(current, null, 2))
   return current

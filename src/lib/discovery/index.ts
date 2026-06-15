@@ -1,32 +1,26 @@
 import {basename} from 'node:path'
 import type {DiscoveryReport} from '../spec/model.js'
-import {discoverOpenApi} from './openapi.js'
-import {discoverMigrations} from './migrations.js'
-import {discoverKafka} from './kafka.js'
-import {discoverSecurity} from './security.js'
+import type {DiscoveryConfig} from '../config.js'
+import {detectStack} from './stack.js'
+import {assembleProviders, runProviders} from './registry.js'
+import type {DiscoveryContext} from './provider.js'
 
-export async function discover(root: string, serviceName?: string): Promise<DiscoveryReport> {
-  const [api, migrations, kafka, security] = await Promise.all([
-    discoverOpenApi(root),
-    discoverMigrations(root),
-    discoverKafka(root),
-    discoverSecurity(root),
-  ])
+export type {DiscoveryProvider, ProviderResult, Stack, SurfaceKind} from './provider.js'
+export type {CustomProviderSpec} from './custom.js'
 
-  const warnings = [api.warning, migrations.warning, kafka.warning].filter(Boolean) as string[]
+// Stack-agnostic discovery: detect the stack, assemble the applicable providers
+// (builtin + enterprise custom + plugins), run them, and merge into one report.
+// Signature is back-compatible; pass `discovery` config to enable custom providers.
+export async function discover(
+  root: string,
+  serviceName?: string,
+  discovery?: DiscoveryConfig,
+): Promise<DiscoveryReport> {
+  const stack = await detectStack(root)
+  const ctx: DiscoveryContext = {root, stack}
 
-  return {
-    generatedAt: new Date().toISOString(),
-    service: {name: serviceName ?? basename(root), root},
-    api: {
-      file: api.file,
-      version: api.version,
-      operations: api.operations,
-      securitySchemes: api.securitySchemes,
-    },
-    data: {tables: migrations.tables, migrationFiles: migrations.files},
-    events: {topics: kafka.topics},
-    security,
-    warnings,
-  }
+  const {providers, warnings} = await assembleProviders(ctx, discovery)
+  const report = await runProviders(ctx, providers, serviceName ?? basename(root))
+  report.warnings.push(...warnings)
+  return report
 }

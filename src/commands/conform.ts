@@ -26,7 +26,7 @@ export default class Conform extends Command {
 
     // Re-establish the accepted surface: discover now and write it as the baseline.
     if (flags['update-baseline']) {
-      const current = await discover(flags.root, cfg?.service)
+      const current = await discover(flags.root, cfg?.service, cfg?.discovery)
       await ensureDir(join(cwd, SPECCORD_DIR))
       await writeFile(join(cwd, BASELINE_PATH), JSON.stringify(current, null, 2))
       this.log(
@@ -46,7 +46,7 @@ export default class Conform extends Command {
 
     const drift =
       baseline && (cfg?.conformance.checkStructuralDrift ?? true)
-        ? structuralDrift(baseline, await discover(flags.root, cfg?.service))
+        ? structuralDrift(baseline, await discover(flags.root, cfg?.service, cfg?.discovery))
         : []
 
     const checks =

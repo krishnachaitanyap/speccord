@@ -2,6 +2,7 @@ import {join} from 'node:path'
 import {mkdir, readFile} from 'node:fs/promises'
 import {parse} from 'yaml'
 import type {GatePolicy} from './spec/model.js'
+import type {CustomProviderSpec} from './discovery/custom.js'
 import {
   defaultCapabilities,
   defaultMethodology,
@@ -19,6 +20,16 @@ export interface ConformanceCheck {
   description?: string
 }
 
+// How discovery finds the contract surface. The enterprise extensibility lives
+// here: disable builtins, declare custom providers for proprietary frameworks,
+// or load code plugins — all without forking speccord.
+export interface DiscoveryConfig {
+  autoDetect?: boolean // (reserved) auto-select providers from the detected stack
+  disable?: string[] // provider names to turn off, e.g. ['kafka']
+  custom?: CustomProviderSpec[] // declarative regex/glob providers
+  plugins?: string[] // JS modules exporting DiscoveryProvider[]
+}
+
 export interface SpeccordConfig {
   service: string
   baseSpec: string // path to the base spec markdown
@@ -27,6 +38,8 @@ export interface SpeccordConfig {
   featuresDir: string
   // Contract-surface globs used by `gate` to detect changes that need a spec update.
   contractSurface: string[]
+  // How the codebase is discovered (providers, custom rules, plugins).
+  discovery?: DiscoveryConfig
   // Customization knobs (a preset is just a named bundle of these).
   customization: GatePolicy
   // Runtime conformance: structural drift vs the baseline + external checks.
@@ -127,10 +140,16 @@ export function defaultConfig(service: string, scale = 2): SpeccordConfig {
     prdPath: 'specs/prd.md',
     contractSurface: [
       '**/openapi*.{yaml,yml,json}',
+      '**/*.{graphql,gql}',
+      '**/*.proto',
+      '**/asyncapi*.{yaml,yml,json}',
       '**/db/migration/**/*.sql',
+      '**/migrations/**/*.sql',
       '**/resources/**/V*__*.sql',
+      '**/schema.prisma',
       '**/*SecurityConfig*.java',
     ],
+    discovery: {autoDetect: true, disable: [], custom: [], plugins: []},
     customization: {requirePlanForImplementation: true},
     conformance: {
       checkStructuralDrift: true,
@@ -157,6 +176,7 @@ function mergeConfig(base: SpeccordConfig, overlay: Partial<SpeccordConfig>): Sp
     conformance: {...base.conformance, ...(overlay.conformance ?? {})},
     implement: {...base.implement, ...(overlay.implement ?? {})},
     agents: {...base.agents, ...(overlay.agents ?? {})},
+    discovery: {...base.discovery, ...(overlay.discovery ?? {})},
     methodology: m
       ? {
           scale: m.scale ?? base.methodology.scale,

@@ -32,7 +32,7 @@ export default class BaseDraft extends Command {
       this.log(`Using cached discovery report (${REPORT_PATH}).`)
     } catch {
       this.log('No cached report — scanning...')
-      report = await discover(flags.root, cfg?.service)
+      report = await discover(flags.root, cfg?.service, cfg?.discovery)
     }
 
     // 2) REVIEW + CONFIRM (interactive unless --yes)

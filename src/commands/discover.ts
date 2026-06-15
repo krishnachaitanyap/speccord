@@ -18,7 +18,7 @@ export default class Discover extends Command {
     const {flags} = await this.parse(Discover)
     const cwd = process.cwd()
     const cfg = await loadConfig(cwd)
-    const report = await discover(flags.root, flags.service ?? cfg?.service)
+    const report = await discover(flags.root, flags.service ?? cfg?.service, cfg?.discovery)
 
     await ensureDir(join(cwd, SPECCORD_DIR))
     await writeFile(join(cwd, REPORT_PATH), JSON.stringify(report, null, 2))

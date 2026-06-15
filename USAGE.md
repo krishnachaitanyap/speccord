@@ -24,6 +24,7 @@ material and troubleshooting.
 13. [Working without an API key](#13-working-without-an-api-key)
 14. [Troubleshooting & FAQ](#14-troubleshooting--faq)
 15. [Integrating with AI agents](#15-integrating-with-ai-agents)
+16. [Discovery: stacks & custom providers](#16-discovery-stacks--custom-providers)
 
 ---
 
@@ -607,3 +608,65 @@ drift on every iteration, which is the whole point.
   `.speccord/` relative to the launch directory (the agent sets this to the workspace).
 - **CI uses the same checks** the agent does (`gate`, `conform`, `lint`, `analyze`), so "passes
   locally for the agent" and "passes CI" are the same bar.
+
+---
+
+## 16. Discovery: stacks & custom providers
+
+`speccord discover` is a **provider registry**, not a single parser. It detects your stack (from
+marker files like `pom.xml`, `package.json`, `go.mod`, `pyproject.toml`) and runs the applicable
+providers, merging their facts into one report. The rest of speccord (gates, `conform`, lifecycle)
+is stack-agnostic — it only reads the normalized report.
+
+Built-in providers today: `openapi`, `sql-migrations`, `kafka`, `spring-security`. (More universal
+ones — GraphQL, Protobuf, AsyncAPI, Prisma — are on the [roadmap](ROADMAP.md).)
+
+### Enterprise: teach speccord your own frameworks (no fork)
+
+Configure discovery under `discovery:` in `speccord.config.yaml`. Three levers:
+
+```yaml
+discovery:
+  disable: [kafka]                 # turn off a built-in provider by name
+
+  # 1) Declarative custom providers — pull facts out of proprietary files with regex.
+  custom:
+    - name: acme-rpc
+      kind: api                    # api | data | events | security (a label)
+      files: ["**/*.acme"]         # globs to scan
+      operations:                  # capture API operations
+        match: "rpc\\s+(\\S+)\\s+(\\S+)"
+        methodGroup: 1             # which capture group is the HTTP method
+        pathGroup: 2               # which is the path
+        idGroup: 3                 # (optional) operationId
+      tables: { match: "entity\\s+(\\w+)", nameGroup: 1 }       # capture data tables
+      topics: { match: "channel\\s+(\\S+)", nameGroup: 1, role: produces }  # capture events
+      scopes: { match: "scope\\s+(\\S+)", group: 1 }            # capture auth scopes
+      resourceServerWhen: "@Secured"                            # presence => resourceServer=true
+
+  # 2) Code plugins — for anything too complex for regex.
+  plugins: ["./speccord-providers/internal.js"]   # exports a DiscoveryProvider[] (default or `providers`)
+```
+
+A plugin module:
+
+```js
+// speccord-providers/internal.js
+export default [{
+  name: 'internal-rpc',
+  kind: 'api',
+  async detect({ root }) { /* return true/false */ return true },
+  async discover({ root, stack }) {
+    // ...parse however you like...
+    return { api: { operations: [{ method: 'post', path: '/widgets', scopes: [] }] } }
+  },
+}]
+```
+
+Notes:
+- Custom-provider facts merge with built-in ones (operations de-duped by `METHOD path`, tables by
+  name, topics by `name:role`). Declarative-source facts (e.g. an OpenAPI file) win on `file`/`version`.
+- `kind` is just a label; a provider may emit any surface (a single rule block can capture
+  operations *and* tables *and* scopes, as the `acme-rpc` example does).
+- Discovery facts are still **confirmed by a human in `base draft`** before they become the
+  baseline — the hybrid invariant holds: tools propose, you ratify, code enforces.

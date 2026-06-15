@@ -30,6 +30,7 @@ export interface TopicInfo {
 export interface DiscoveryReport {
   generatedAt: string
   service: {name: string; root: string}
+  stack?: string[] // detected languages, e.g. ['java'] (informational)
   api: {
     file?: string
     version?: string
