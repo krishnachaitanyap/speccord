@@ -619,8 +619,9 @@ marker files like `pom.xml`, `package.json`, `go.mod`, `pyproject.toml`) and run
 providers, merging their facts into one report. The rest of speccord (gates, `conform`, lifecycle)
 is stack-agnostic — it only reads the normalized report.
 
-Built-in providers today: `openapi`, `sql-migrations`, `kafka`, `spring-security`. (More universal
-ones — GraphQL, Protobuf, AsyncAPI, Prisma — are on the [roadmap](ROADMAP.md).)
+Built-in providers: `openapi`, `graphql`, `protobuf`, `asyncapi`, `prisma`, `sql-migrations`,
+`sql-ddl`, `kafka`, `spring-security`. The universal ones (OpenAPI / GraphQL / Protobuf / AsyncAPI /
+Prisma / SQL) run on any language; each activates only when its file type is present.
 
 ### Enterprise: teach speccord your own frameworks (no fork)
 

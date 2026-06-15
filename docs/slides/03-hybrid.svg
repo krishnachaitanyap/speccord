@@ -6,7 +6,7 @@
   <rect x="80" y="178" width="120" height="5" rx="2" fill="#2dd4bf" opacity="1.0"/>
   <rect x="80" y="220" width="540" height="320" rx="16" fill="#0f242a" opacity="1.0"/>
   <text x="110" y="280" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="26" font-weight="bold" fill="#2dd4bf" text-anchor="start" opacity="1.0">Deterministic (code)</text>
-  <text x="110" y="330" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">• Parse OpenAPI · migrations · Kafka · security</text>
+  <text x="110" y="330" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">• Parse OpenAPI/GraphQL/proto · SQL · events · security</text>
   <text x="110" y="376" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">• Diff the contract surface (drift)</text>
   <text x="110" y="422" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">• Lifecycle state machine + entry gates</text>
   <text x="110" y="468" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">• Capability resolution from scale</text>

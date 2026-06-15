@@ -118,7 +118,7 @@ def s_hybrid(n, tot):
     kicker(s, "THE IDEA", "Hybrid by construction", EMERALD)
     box(s, 0.7, 2.2, 5.7, 3.2, PANEL)
     text(s, 1.0, 2.4, 5.2, 0.5, "Deterministic (code)", size=19, color=EMERALD, bold=True)
-    text(s, 1.0, 3.0, 5.2, 2.3, ["• Parse OpenAPI · migrations · Kafka · security",
+    text(s, 1.0, 3.0, 5.2, 2.3, ["• Parse OpenAPI/GraphQL/proto · SQL · events · security",
                                   "• Diff the contract surface (drift)",
                                   "• Lifecycle state machine + entry gates",
                                   "• Capability resolution from scale"], size=15, color=TEXT)

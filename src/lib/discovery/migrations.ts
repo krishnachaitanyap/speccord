@@ -10,7 +10,7 @@ export interface MigrationsResult {
 
 // Heuristic CREATE TABLE parser. Good enough for discovery; the developer
 // confirms/corrects in the review step.
-function parseCreateTables(sql: string, sourceFile: string): TableInfo[] {
+export function parseCreateTables(sql: string, sourceFile: string): TableInfo[] {
   const tables: TableInfo[] = []
   const re = /create\s+table\s+(?:if\s+not\s+exists\s+)?["`]?([\w.]+)["`]?\s*\(([\s\S]*?)\)\s*;/gi
   let m: RegExpExecArray | null

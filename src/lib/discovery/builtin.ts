@@ -2,6 +2,7 @@ import {discoverOpenApi} from './openapi.js'
 import {discoverMigrations} from './migrations.js'
 import {discoverKafka} from './kafka.js'
 import {discoverSecurity} from './security.js'
+import {UNIVERSAL_PROVIDERS} from './universal.js'
 import type {DiscoveryProvider} from './provider.js'
 
 // The original parsers, wrapped as providers. They self-handle "source absent"
@@ -53,4 +54,5 @@ export const BUILTIN_PROVIDERS: DiscoveryProvider[] = [
   migrationsProvider,
   kafkaProvider,
   securityProvider,
+  ...UNIVERSAL_PROVIDERS, // GraphQL, Protobuf, AsyncAPI, Prisma, SQL DDL (run only when present)
 ]

@@ -104,7 +104,7 @@ def slide_hybrid(n, total):
     out = header("Hybrid by construction", "THE IDEA", EMERALD)
     out.append(rect(80, 220, 540, 320, PANEL))
     out.append(t(110, 280, "Deterministic (code)", size=26, fill=EMERALD, weight="bold"))
-    for i, s in enumerate(["Parse OpenAPI · migrations · Kafka · security",
+    for i, s in enumerate(["Parse OpenAPI/GraphQL/proto · SQL · events · security",
                            "Diff the contract surface (drift)",
                            "Lifecycle state machine + entry gates",
                            "Capability resolution from scale"]):

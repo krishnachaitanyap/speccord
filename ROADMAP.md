@@ -18,18 +18,16 @@ the report.
   Behavior-preserving.
 - [x] **Enterprise extensibility** (`lib/discovery/custom.ts`): declarative custom providers + code
   plugins, configured under `discovery:` (see USAGE §16). Disable builtins by name.
-- [ ] **A2 — universal declarative providers**: GraphQL SDL, Protobuf, AsyncAPI, generic SQL DDL
-  (Liquibase/Alembic/Rails/Knex), Prisma/Drizzle schema. This is where speccord becomes genuinely
-  language-agnostic for most services out of the box.
+- [x] **A2 — universal declarative providers**: GraphQL SDL, Protobuf, AsyncAPI, generic SQL DDL,
+  and Prisma schema — each runs only when present. speccord is now language-agnostic out of the box.
 - [ ] **A3 — framework adapters**: Node (Express/Nest), Python (FastAPI/Flask), Go, Rails routes.
 - [ ] **A4 — agnostic fallback**: LLM-propose → human-confirm extraction for the long tail (stays
   within the hybrid invariant: model proposes, human ratifies, code enforces).
 
 ## Workstream B — agent integration
 
-- [ ] **B1 — full MCP surface**: expose specs/constitution/stories as MCP **resources**, ship MCP
-  **prompts** ("implement next story", "fix drift"), add a `speccord_next_action` tool and the story
-  dev-loop tools.
+- [x] **B1 — full MCP surface**: specs/constitution/stories as MCP **resources**, **prompts**
+  (implement-next-story, review-changes, fix-drift), `speccord_next_action`, and story dev-loop tools.
 - [ ] **B2 — broaden targets**: `agent-rules` for Windsurf, Cline, Continue, Aider, Zed, Gemini CLI,
   Codex CLI, Amazon Q, Roo, JetBrains AI — plus slash-command/prompt files where supported.
 - [ ] **B3 — hooks**: `speccord hooks install` wires git pre-commit/pre-push to `gate`/`lint`/`conform`.
