@@ -79,6 +79,17 @@
   th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
   th{color:var(--muted);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.4px}
   td code{white-space:nowrap}
+  /* tabbed viewer */
+  .tabs{border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:1.1em 0}
+  .tablist{display:flex;flex-wrap:wrap;background:var(--bg2);border-bottom:1px solid var(--line)}
+  .tab{background:none;border:none;border-bottom:2px solid transparent;padding:9px 16px;font-family:var(--sans);
+       font-size:13px;color:var(--muted);cursor:pointer}
+  .tab:hover{color:var(--text)} .tab.active{color:var(--coral);border-bottom-color:var(--coral)}
+  .panel{display:none} .panel.active{display:block}
+  .tabs pre{margin:0;border:none;border-radius:0;max-height:440px}
+  .cmd-h{display:flex;align-items:baseline;gap:10px;margin:1.7em 0 .2em}
+  .cmd-h h3{margin:0} .cmd-h .sig{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+  .flags{font-size:13.5px} .flags td:first-child{white-space:nowrap}
   .callout{display:flex;gap:11px;border:1px solid var(--line);border-left:3px solid var(--coral);
       background:var(--bg2);border-radius:8px;padding:12px 15px;margin:1.2em 0;font-size:14.5px}
   .callout .i{color:var(--coral);font-weight:700} .callout.tip{border-left-color:#3aa06a} .callout.tip .i{color:#3aa06a}
@@ -139,8 +150,14 @@
       <a class="nav-link" data-page="mcp" href="#mcp">MCP server</a>
       <a class="nav-link" data-page="agent-rules" href="#agent-rules">Wiring up agents</a>
     </div>
-    <div class="group"><h4>Reference</h4>
-      <a class="nav-link" data-page="commands" href="#commands">Commands</a>
+    <div class="group"><h4>Command reference</h4>
+      <a class="nav-link" data-page="commands" href="#commands">All commands</a>
+      <a class="nav-link" data-page="ref-setup" href="#ref-setup">Setup &amp; discovery</a>
+      <a class="nav-link" data-page="ref-authoring" href="#ref-authoring">Authoring specs</a>
+      <a class="nav-link" data-page="ref-plan" href="#ref-plan">Plan, tasks &amp; checks</a>
+      <a class="nav-link" data-page="ref-lifecycle" href="#ref-lifecycle">Lifecycle &amp; enforcement</a>
+      <a class="nav-link" data-page="ref-stories" href="#ref-stories">Stories</a>
+      <a class="nav-link" data-page="ref-agents" href="#ref-agents">Agents &amp; MCP</a>
       <a class="nav-link" data-page="configuration" href="#configuration">Configuration</a>
     </div>
   </nav>
@@ -419,6 +436,373 @@ export SPECCORD_MODEL=claude-sonnet-4-6   <span class="c-comment"># optional; th
       </table>
       <p>Every verifier (<code>analyze</code>, <code>lint</code>, <code>gate</code>, <code>conform</code>, <code>status</code>, <code>discover</code>) accepts <code>--json</code> for agents and CI.</p>
       <div class="pager"><a href="#agent-rules"><small>Previous</small>← Wiring up agents</a>
+        <a class="nx" href="#ref-setup"><small>Next</small>Setup &amp; discovery →</a></div>
+    </section>
+
+    <!-- REF: SETUP & DISCOVERY -->
+    <section class="page" data-page="ref-setup">
+      <div class="crumb">Command reference</div>
+      <h1>Setup &amp; discovery</h1>
+      <p class="lead"><code>init</code>, <code>capabilities</code>, <code>discover</code>, <code>base draft</code>, <code>base new</code>.</p>
+
+      <div class="cmd-h"><h3>init</h3><span class="sig">speccord init [--service &lt;name&gt;] [--scale 0-4] [--pack &lt;name&gt;] [--greenfield]</span></div>
+      <p>Scaffold <code>speccord.config.yaml</code>, <code>specs/{base,features,stories,templates}/</code>, and a constitution.</p>
+      <div class="tabs"><div class="tablist"><button class="tab active">Command</button><button class="tab">Output</button></div><div class="panels">
+        <div class="panel active"><pre><code><span class="c-cmd">speccord</span> init --service orders --scale 2</code></pre></div>
+        <div class="panel"><pre><code>Initialized speccord for service "orders".
+  - speccord.config.yaml (scale: 2/medium, preset: standard)
+  - specs/constitution.md
+  - specs/{base,features,stories,templates}/
+
+See what is enabled at this scale:  speccord capabilities</code></pre></div>
+      </div></div>
+
+      <div class="cmd-h"><h3>capabilities</h3><span class="sig">speccord capabilities [--scales] [--packs]</span></div>
+      <p>Show the active scale, phases, roles, and which command each capability unlocks.</p>
+      <div class="tabs"><div class="tablist"><button class="tab active">Command</button><button class="tab">Output</button></div><div class="panels">
+        <div class="panel active"><pre><code><span class="c-cmd">speccord</span> capabilities</code></pre></div>
+        <div class="panel"><pre><code>Scale:    2 (medium) — Standard feature work.
+Phases:   [ ] analysis  [x] planning  [x] solutioning  [x] implementation
+Roles:    (analyst)  pm  (ux)  architect  sm  dev  qa  (po)
+Capabilities:
+  [x] prd           planning       → prd
+  [x] architecture  solutioning    → discover, base draft|new, plan
+  [x] epicsStories  implementation → story new|list|next|advance, implement
+  [x] qaReview      implementation → review, agent qa
+  [x] conformance   implementation → conform</code></pre></div>
+      </div></div>
+
+      <div class="cmd-h"><h3>discover</h3><span class="sig">speccord discover [--root .] [--json]</span></div>
+      <p>Parse the contract surface (OpenAPI/GraphQL/proto/SQL/events/security) into a report + baseline. Runs only the providers whose file types are present.</p>
+      <div class="tabs"><div class="tablist"><button class="tab active">Command</button><button class="tab">Output</button><button class="tab">JSON (--json)</button></div><div class="panels">
+        <div class="panel active"><pre><code><span class="c-cmd">speccord</span> discover</code></pre></div>
+        <div class="panel"><pre><code>Discovered: orders
+  API:      1 operations (src/main/resources/openapi.yaml)
+  Data:     1 tables across 1 migrations
+  Events:   0 Kafka topics
+  Security: resource-server=false, scopes=[]
+
+Report written to .speccord/discovery-report.json. Next: speccord base draft</code></pre></div>
+        <div class="panel"><pre><code>{
+  "service": { "name": "orders", "root": "." },
+  "stack": ["java"],
+  "api": {
+    "file": "src/main/resources/openapi.yaml",
+    "operations": [
+      { "method": "post", "path": "/orders/{id}/cancel",
+        "operationId": "cancelOrder", "scopes": ["orders.write"] }
+    ],
+    "securitySchemes": ["oauth2"]
+  },
+  "data": { "tables": [
+    { "name": "orders", "primaryKey": ["id"],
+      "columns": [ { "name": "id", "type": "uuid", "nullable": false },
+                   { "name": "status", "type": "text", "nullable": false } ] }
+  ] },
+  "events": { "topics": [] }
+}</code></pre></div>
+      </div></div>
+
+      <div class="cmd-h"><h3>base draft</h3><span class="sig">speccord base draft [--yes] [--no-llm] [--force]</span></div>
+      <p>Turn the confirmed discovery facts into the base spec (the contract). The fact tables are deterministic; only the prose is model-written. Also snapshots <code>.speccord/baseline.json</code>.</p>
+      <div class="tabs"><div class="tablist"><button class="tab active">Command</button><button class="tab">Generated base spec</button></div><div class="panels">
+        <div class="panel active"><pre><code><span class="c-cmd">speccord</span> base draft --yes</code></pre></div>
+        <div class="panel"><pre><code>---
+service: orders
+status: Draft
+specVersion: "0.1"
+---
+
+# Service Specification: orders
+
+> Living specification. Source of truth for the contract surface of this service.
+
+## 2. API surface
+Authoritative contract: `src/main/resources/openapi.yaml` (version 1.2.0).
+
+| Method &amp; path           | operationId | Required scope |
+|---------------------------|-------------|----------------|
+| POST /orders/{id}/cancel  | cancelOrder | orders.write   |
+
+## 4. Persistence
+Discovered tables:
+- `orders` — pk(id); columns: id, status, total
+
+## 6. Security model
+Resource server: true · scopes: orders.write</code></pre></div>
+      </div></div>
+
+      <div class="cmd-h"><h3>base new</h3><span class="sig">speccord base new --intent "&lt;one paragraph&gt;" [--no-llm]</span></div>
+      <p>Greenfield: author the target base spec from intent. Fact tables start empty and fill in as features land.</p>
+      <pre><code><span class="c-cmd">speccord</span> base new --intent "Issue and redeem gift cards; owns balances"</code></pre>
+      <div class="pager"><a href="#commands"><small>Previous</small>← All commands</a>
+        <a class="nx" href="#ref-authoring"><small>Next</small>Authoring specs →</a></div>
+    </section>
+
+    <!-- REF: AUTHORING -->
+    <section class="page" data-page="ref-authoring">
+      <div class="crumb">Command reference</div>
+      <h1>Authoring specs</h1>
+      <p class="lead"><code>constitution</code>, <code>feature new</code>, <code>clarify</code>, <code>prd</code>, <code>brief</code>.</p>
+
+      <div class="cmd-h"><h3>feature new</h3><span class="sig">speccord feature new --id &lt;ID&gt; --title "&lt;title&gt;"</span></div>
+      <p>Create a feature spec, pinned to the current base version, from the template.</p>
+      <div class="tabs"><div class="tablist"><button class="tab active">Command</button><button class="tab">Generated feature spec</button></div><div class="panels">
+        <div class="panel active"><pre><code><span class="c-cmd">speccord</span> feature new --id SPEC-142 --title "Order cancellation"
+<span class="c-ok"># → specs/features/SPEC-142-order-cancellation.md (status: Draft)</span></code></pre></div>
+        <div class="panel"><pre><code>---
+id: SPEC-142
+title: Order cancellation
+status: Draft
+base: orders
+baseVersion: "0.1"
+---
+
+# Order cancellation
+
+## 2. Objective
+&lt;!-- one paragraph: what the change achieves --&gt;
+
+## 4. Functional requirements
+- FR-1
+
+## 5. API contract delta
+&lt;!-- OpenAPI additions/changes only --&gt;
+
+## 12. Acceptance criteria
+- AC-1: Given ... when ... then ...  [test: &lt;TestId&gt;]</code></pre></div>
+      </div></div>
+      <div class="callout"><span class="i">Note</span><div>Acceptance criteria must be <code>Given/When/Then</code> and each linked to a test via <code>[test: …]</code> — the lifecycle gate enforces it before implementation.</div></div>
+
+      <div class="cmd-h"><h3>clarify</h3><span class="sig">speccord clarify &lt;spec&gt; [--llm] [--yes]</span></div>
+      <p>Resolve <code>[NEEDS CLARIFICATION: …]</code> markers interactively. <code>--llm</code> first asks the model to flag ambiguities; <code>--yes</code> just reports unresolved ones (CI).</p>
+      <pre><code><span class="c-cmd">speccord</span> clarify specs/features/SPEC-142-order-cancellation.md</code></pre>
+
+      <div class="cmd-h"><h3>constitution</h3><span class="sig">speccord constitution [--show]</span></div>
+      <p>Create (or print) the project principles plans are checked against.</p>
+      <div class="tabs"><div class="tablist"><button class="tab active">Command</button><button class="tab">Generated constitution</button></div><div class="panels">
+        <div class="panel active"><pre><code><span class="c-cmd">speccord</span> constitution</code></pre></div>
+        <div class="panel"><pre><code># Constitution: orders
+
+## Principles
+
+### P-1: Contract-first
+The OpenAPI/event/schema contract is the source of truth. Code conforms to the
+published contract; it is never changed silently to match code.
+
+### P-2: Backward compatibility
+No breaking change without a versioned migration and a deprecation window.
+
+### P-3: Test-backed acceptance
+Every acceptance criterion links to at least one automated test before code.</code></pre></div>
+      </div></div>
+
+      <div class="cmd-h"><h3>brief · prd</h3><span class="sig">speccord brief --idea "…"  ·  speccord prd [--validate]</span></div>
+      <p>Scale 3+: the analyst turns an idea into a product brief; the PM turns it into a PRD with prioritized epics (<code>EPIC-n</code>) that <code>story new</code> shards.</p>
+      <pre><code><span class="c-cmd">speccord</span> brief --idea "A gift-card platform: issue, redeem, refund"
+<span class="c-cmd">speccord</span> prd            <span class="c-comment"># → specs/prd.md with EPIC-1, EPIC-2, …</span></code></pre>
+      <div class="pager"><a href="#ref-setup"><small>Previous</small>← Setup &amp; discovery</a>
+        <a class="nx" href="#ref-plan"><small>Next</small>Plan, tasks &amp; checks →</a></div>
+    </section>
+
+    <!-- REF: PLAN -->
+    <section class="page" data-page="ref-plan">
+      <div class="crumb">Command reference</div>
+      <h1>Plan, tasks &amp; checks</h1>
+      <p class="lead"><code>plan</code>, <code>tasks</code>, <code>analyze</code>, <code>checklist</code> — the forward chain and its deterministic check.</p>
+
+      <p>From one approved feature spec, the chain generates sibling artifacts. Flip through what each step produces:</p>
+      <div class="tabs"><div class="tablist">
+        <button class="tab active">1 · plan</button><button class="tab">2 · tasks</button><button class="tab">3 · analyze</button></div><div class="panels">
+        <div class="panel active"><pre><code><span class="c-comment"># speccord plan specs/features/SPEC-142-*.md  →  *.plan.md</span>
+# Implementation Plan: Order cancellation
+
+## 1. Technical approach
+How the change is implemented in terms of the existing service.
+
+## 3. Constitution check
+For each principle (P-n), state how the plan honors it; record any exception.
+
+## 4. Data &amp; contract changes
+Schema/migration deltas and OpenAPI deltas. Backward-compat notes.
+
+## 6. Test strategy
+How each AC-n is verified, mapped to test types.</code></pre></div>
+        <div class="panel"><pre><code><span class="c-comment"># speccord tasks specs/features/SPEC-142-*.md  →  *.tasks.md</span>
+# Tasks: Order cancellation
+> Ordered. `[P]` = parallelizable.
+
+## Tasks
+- [ ] T-1 Add cancel endpoint (files: OrderController.java) [AC: AC-1]
+- [ ] T-2 [P] Emit OrderCancelled event (files: ...) [AC: AC-2]
+- [ ] T-3 Wire up acceptance tests [AC: AC-1, AC-2]</code></pre></div>
+        <div class="panel"><pre><code><span class="c-comment"># speccord analyze specs/features/SPEC-142-order-cancellation.md</span>
+  [error] (coverage) AC-2 is not linked to a test
+  [warn]  (constitution) plan does not reference any principle (P-n)
+
+1 error(s), 1 warning(s).
+Analysis found blocking issues.   <span class="c-comment"># exits non-zero</span></code></pre></div>
+      </div></div>
+      <div class="callout warn"><span class="i">Tip</span><div>Pass the <b>exact</b> spec file to <code>analyze</code>/<code>plan</code>/<code>tasks</code> — a glob like <code>SPEC-142-*.md</code> also matches the generated <code>.plan.md</code>/<code>.tasks.md</code> siblings.</div></div>
+
+      <div class="cmd-h"><h3>checklist</h3><span class="sig">speccord checklist &lt;spec&gt; [--check]</span></div>
+      <p>Generate a spec-readiness checklist (10 standard items + spec-specific ones). <code>--check</code> fails if any box is unchecked — useful under the <code>compliance</code> preset.</p>
+      <pre><code><span class="c-cmd">speccord</span> checklist specs/features/SPEC-142-*.md --check</code></pre>
+      <div class="pager"><a href="#ref-authoring"><small>Previous</small>← Authoring specs</a>
+        <a class="nx" href="#ref-lifecycle"><small>Next</small>Lifecycle &amp; enforcement →</a></div>
+    </section>
+
+    <!-- REF: LIFECYCLE -->
+    <section class="page" data-page="ref-lifecycle">
+      <div class="crumb">Command reference</div>
+      <h1>Lifecycle &amp; enforcement</h1>
+      <p class="lead"><code>advance</code>, <code>lint</code>, <code>gate</code>, <code>conform</code>, <code>status</code>.</p>
+
+      <div class="cmd-h"><h3>advance</h3><span class="sig">speccord advance &lt;spec&gt; --to "&lt;status&gt;"</span></div>
+      <p>Move a spec to a new status; the entry gate must pass or the transition is blocked.</p>
+      <div class="tabs"><div class="tablist"><button class="tab active">Command</button><button class="tab">Blocked</button></div><div class="panels">
+        <div class="panel active"><pre><code><span class="c-cmd">speccord</span> advance specs/features/SPEC-142-*.md --to Approved</code></pre></div>
+        <div class="panel"><pre><code>Gate to enter "In Implementation" not satisfied:
+  - every acceptance criterion must link to a test
+  - no task breakdown found — run `speccord tasks`
+Blocked.</code></pre></div>
+      </div></div>
+
+      <div class="cmd-h"><h3>gate</h3><span class="sig">speccord gate [--base origin/main] [--json]</span></div>
+      <p>CI drift gate: fails if a contract-surface file changed without a spec change in the same diff.</p>
+      <div class="tabs"><div class="tablist"><button class="tab active">Pass</button><button class="tab">Fail</button><button class="tab">JSON</button></div><div class="panels">
+        <div class="panel active"><pre><code>$ <span class="c-cmd">speccord</span> gate --base origin/main
+Gate OK: a spec was updated alongside the contract change.</code></pre></div>
+        <div class="panel"><pre><code>Contract-surface files changed:
+  - src/main/resources/openapi.yaml
+Gate FAILED: the contract surface changed but no spec was updated.   <span class="c-comment"># exit 1</span></code></pre></div>
+        <div class="panel"><pre><code>{ "pass": false, "contractChanged": ["src/main/resources/openapi.yaml"],
+  "specChanged": false, "base": "origin/main" }</code></pre></div>
+      </div></div>
+
+      <div class="cmd-h"><h3>conform</h3><span class="sig">speccord conform [--update-baseline] [--json]</span></div>
+      <p>Runtime drift: re-discovers the live surface, diffs the baseline, runs configured contract checks.</p>
+      <div class="tabs"><div class="tablist"><button class="tab active">Drift</button><button class="tab">Accept</button></div><div class="panels">
+        <div class="panel active"><pre><code>$ <span class="c-cmd">speccord</span> conform
+Structural drift: 1 change(s) vs baseline:
+  + operation: POST /orders/{id}/cancel
+NOT CONFORMANT: the spec is out of date. Update the base spec.   <span class="c-comment"># exit 1</span></code></pre></div>
+        <div class="panel"><pre><code>$ <span class="c-cmd">speccord</span> conform --update-baseline
+Baseline updated from current discovery (1 ops, 1 tables, 0 topics).
+<span class="c-comment"># run after the base spec documents the change</span></code></pre></div>
+      </div></div>
+
+      <div class="cmd-h"><h3>lint · status</h3><span class="sig">speccord lint [--json]  ·  speccord status [--json]</span></div>
+      <p><code>lint</code> validates feature specs (front-matter, base ref, AC↔test). <code>status</code> lists every spec and its lifecycle state. Both take <code>--json</code>.</p>
+      <pre><code><span class="c-cmd">speccord</span> status --json | jq '.[] | {id, status}'</code></pre>
+      <div class="pager"><a href="#ref-plan"><small>Previous</small>← Plan, tasks &amp; checks</a>
+        <a class="nx" href="#ref-stories"><small>Next</small>Stories →</a></div>
+    </section>
+
+    <!-- REF: STORIES -->
+    <section class="page" data-page="ref-stories">
+      <div class="crumb">Command reference</div>
+      <h1>Stories</h1>
+      <p class="lead"><code>story new|list|next|advance|implement</code> — context-engineered, story-driven dev.</p>
+
+      <div class="cmd-h"><h3>story new</h3><span class="sig">speccord story new --title "&lt;title&gt;" [--epic EPIC-n] [--feature &lt;spec&gt;]</span></div>
+      <p>Shard an epic/feature into a self-contained story that embeds everything needed to implement it with no other doc open.</p>
+      <div class="tabs"><div class="tablist"><button class="tab active">Command</button><button class="tab">Generated story</button></div><div class="panels">
+        <div class="panel active"><pre><code><span class="c-cmd">speccord</span> story new --epic EPIC-1 --title "Issue refund on cancel"</code></pre></div>
+        <div class="panel"><pre><code>---
+id: STORY-1
+title: Issue refund on cancel
+epic: EPIC-1
+storyStatus: Draft
+---
+
+# STORY-1: Issue refund on cancel
+
+## Context (embedded — implement with no other doc open)
+&lt;!-- relevant requirement, contract slice, constraints --&gt;
+
+## Acceptance criteria
+- AC-1: Given a cancelled order when ... then a refund is issued  [test: RefundTest]
+
+## Dev notes
+&lt;!-- files likely touched, contract details, gotchas --&gt;
+
+## Tasks
+- [ ] T-1 ...</code></pre></div>
+      </div></div>
+
+      <div class="cmd-h"><h3>story list · next · advance</h3><span class="sig">speccord story list | next | advance &lt;file&gt; --to "&lt;status&gt;"</span></div>
+      <p>The board, the next pickup, and the status machine (<code>Draft → Ready → In Progress → Review → Done</code>).</p>
+      <pre><code>$ <span class="c-cmd">speccord</span> story list
+ID         STATUS       EPIC     TITLE
+STORY-1    Draft        EPIC-1   Issue refund on cancel
+0/1 done.</code></pre>
+
+      <div class="cmd-h"><h3>story implement</h3><span class="sig">speccord story implement &lt;file&gt; [--execute] [--task T-n]</span></div>
+      <p>Default: write a <code>*.prompts.md</code> pack (one grounded dev prompt per task). With <code>--execute</code> (and <code>implement.agentCommand</code>/<code>testCommand</code> set): drive the agent task-by-task, run tests, check boxes only on green, and move the story to <b>Review</b> when all pass.</p>
+      <pre><code><span class="c-cmd">speccord</span> story implement specs/stories/STORY-1-*.md --execute</code></pre>
+      <div class="pager"><a href="#ref-lifecycle"><small>Previous</small>← Lifecycle &amp; enforcement</a>
+        <a class="nx" href="#ref-agents"><small>Next</small>Agents &amp; MCP →</a></div>
+    </section>
+
+    <!-- REF: AGENTS -->
+    <section class="page" data-page="ref-agents">
+      <div class="crumb">Command reference</div>
+      <h1>Agents &amp; MCP</h1>
+      <p class="lead"><code>agent-rules</code>, <code>mcp</code>, <code>agent &lt;role&gt;</code> — integrate speccord with your coding agent.</p>
+
+      <div class="cmd-h"><h3>agent-rules</h3><span class="sig">speccord agent-rules [--tool claude|cursor|copilot|all] [--command "…"]</span></div>
+      <p>Write the MCP config + a spec-as-contract ruleset for each tool. Flip through the generated files:</p>
+      <div class="tabs"><div class="tablist">
+        <button class="tab active">Claude Code</button><button class="tab">Cursor</button><button class="tab">Copilot / VS Code</button></div><div class="panels">
+        <div class="panel active"><pre><code><span class="c-comment"># .mcp.json</span>
+{
+  "mcpServers": {
+    "speccord": { "command": "speccord", "args": ["mcp"] }
+  }
+}
+
+<span class="c-comment"># CLAUDE.md  (excerpt)</span>
+This project uses speccord: the spec is the executable contract the code is
+checked against. Read the base spec + constitution before coding; stay inside
+the contract; run analyze/gate/conform and fix until green before advancing.</code></pre></div>
+        <div class="panel"><pre><code><span class="c-comment"># .cursor/mcp.json</span>
+{ "mcpServers": { "speccord": { "command": "speccord", "args": ["mcp"] } } }
+
+<span class="c-comment"># .cursor/rules/speccord.mdc</span>
+---
+description: speccord — the spec is the contract the code is checked against
+alwaysApply: true
+---
+(same ruleset as CLAUDE.md)</code></pre></div>
+        <div class="panel"><pre><code><span class="c-comment"># .vscode/mcp.json  (VS Code uses the "servers" key)</span>
+{ "servers": { "speccord": { "command": "speccord", "args": ["mcp"] } } }
+
+<span class="c-comment"># .github/copilot-instructions.md</span>
+(same ruleset as CLAUDE.md)</code></pre></div>
+      </div></div>
+
+      <div class="cmd-h"><h3>mcp</h3><span class="sig">speccord mcp</span></div>
+      <p>The MCP server over stdio. Tools (read / verify / transition / drive), resources, and prompts:</p>
+      <div class="tabs"><div class="tablist"><button class="tab active">Tools</button><button class="tab">Resources</button><button class="tab">Prompts</button></div><div class="panels">
+        <div class="panel active"><pre><code>read       speccord_get_base_spec · get_constitution · get_file
+           · capabilities · status · stories · story_next
+verify     speccord_analyze · lint · gate · conform · discover
+transition speccord_advance · story_advance · update_baseline
+drive      speccord_next_action · story_tasks · mark_task</code></pre></div>
+        <div class="panel"><pre><code>speccord://base-spec        the technical contract
+speccord://constitution     non-negotiable principles
+speccord://capabilities     methodology JSON
+speccord://story/{id}       a context-engineered story</code></pre></div>
+        <div class="panel"><pre><code>implement-next-story   fetch the next pending story and implement it
+review-changes         run the gates and fix what they report
+fix-drift              check conformance and reconcile any drift</code></pre></div>
+      </div></div>
+
+      <div class="cmd-h"><h3>agent</h3><span class="sig">speccord agent &lt;role&gt; [--input &lt;file&gt;] [--task "…"] [--out &lt;file&gt;]</span></div>
+      <p>Run any persona (analyst, pm, ux, architect, sm, dev, qa, po) over an input as an inspectable prompt.</p>
+      <pre><code><span class="c-cmd">speccord</span> agent qa --input specs/features/SPEC-142-*.md --task "hunt edge cases"</code></pre>
+      <div class="pager"><a href="#ref-stories"><small>Previous</small>← Stories</a>
         <a class="nx" href="#configuration"><small>Next</small>Configuration →</a></div>
     </section>
 
@@ -451,7 +835,7 @@ implement:
   agentCommand: "claude -p"      <span class="c-comment"># receives each task prompt on stdin</span>
   testCommand: "./mvnw -q test"</code></pre>
       <p><b>Resolution order</b> (later wins): scale defaults → pack → preset → your explicit keys.</p>
-      <div class="pager"><a href="#commands"><small>Previous</small>← Commands</a>
+      <div class="pager"><a href="#ref-agents"><small>Previous</small>← Agents &amp; MCP</a>
         <a class="nx" href="https://github.com/krishnachaitanyap/speccord/blob/main/USAGE.md"><small>More</small>Full usage guide →</a></div>
     </section>
   </main>
@@ -487,6 +871,14 @@ function buildToc(section){
 function route(){ show((location.hash.replace('#','')||'overview').split('#')[0]); }
 window.addEventListener('hashchange', route);
 
+// tabbed viewers
+document.querySelectorAll('.tabs').forEach(t => {
+  const tabs=[...t.querySelectorAll('.tab')], panels=[...t.querySelectorAll('.panel')];
+  tabs.forEach((tab,i)=> tab.onclick = () => {
+    tabs.forEach(x=>x.classList.remove('active')); panels.forEach(x=>x.classList.remove('active'));
+    tab.classList.add('active'); panels[i].classList.add('active');
+  });
+});
 // copy buttons
 document.querySelectorAll('main pre').forEach(pre => {
   const b = document.createElement('button'); b.className='copy'; b.textContent='Copy';
