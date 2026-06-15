@@ -7,13 +7,13 @@
 <title>speccord — interactive demo</title>
 <style>
   :root{
-    --bg:#07171a; --panel:#0f242a; --panel2:#0b2026; --text:#d6eef0; --muted:#8fb2b6;
-    --sky:#22d3ee; --emerald:#2dd4bf; --violet:#5eead4; --amber:#fbbf24; --red:#f87171;
+    --bg:#1d1411; --panel:#2b1d18; --panel2:#241712; --text:#f7e9e3; --muted:#bb9a8d;
+    --sky:#ff7a5c; --emerald:#ffa886; --violet:#e85a63; --amber:#fbbf24; --red:#f87171;
     --mono:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
     --sans:'Helvetica Neue',Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:#04100f;color:var(--text);font-family:var(--sans);
+  body{margin:0;background:#160f0d;color:var(--text);font-family:var(--sans);
        display:flex;justify-content:center;padding:24px}
   .app{width:100%;max-width:1080px}
   header{display:flex;align-items:baseline;gap:14px;margin-bottom:14px}
@@ -27,13 +27,13 @@
   .chapters li{counter-increment:c;padding:8px 10px;border-radius:8px;font-size:13px;cursor:pointer;color:var(--muted);
                display:flex;gap:8px;align-items:center}
   .chapters li::before{content:counter(c);font-family:var(--mono);font-size:11px;color:var(--muted);
-               width:18px;height:18px;border-radius:50%;border:1px solid #14343a;display:grid;place-items:center;flex:0 0 auto}
+               width:18px;height:18px;border-radius:50%;border:1px solid #3a2820;display:grid;place-items:center;flex:0 0 auto}
   .chapters li:hover{background:var(--panel2);color:var(--text)}
   .chapters li.active{background:var(--panel2);color:var(--text)}
   .chapters li.active::before{border-color:var(--sky);color:var(--sky)}
   .chapters li.done::before{border-color:var(--emerald);color:var(--emerald)}
-  .terminal{background:#08191c;border-radius:12px;border:1px solid #0f242a;overflow:hidden;display:flex;flex-direction:column}
-  .titlebar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#0a1f23;border-bottom:1px solid #0f242a}
+  .terminal{background:#1a110e;border-radius:12px;border:1px solid #2b1d18;overflow:hidden;display:flex;flex-direction:column}
+  .titlebar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#20140f;border-bottom:1px solid #2b1d18}
   .dot{width:12px;height:12px;border-radius:50%}
   .dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c840}
   .titlebar .name{margin-left:8px;color:var(--muted);font-size:12px;font-family:var(--mono)}
@@ -42,7 +42,7 @@
   .scene .cmd{color:var(--text)}
   .scene .cmd .p{color:var(--emerald);user-select:none}
   .scene .cap{color:var(--violet);font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
-  .scene .out{white-space:pre-wrap;color:#b8dfe2}
+  .scene .out{white-space:pre-wrap;color:#ecd3c8}
   .scene .out .ok{color:var(--emerald)}
   .scene .out .warn{color:var(--amber)}
   .scene .out .err{color:var(--red)}
@@ -50,12 +50,12 @@
   .cursor{display:inline-block;width:8px;height:15px;background:var(--emerald);vertical-align:-2px;
           animation:blink 1s steps(1) infinite;margin-left:2px}
   @keyframes blink{50%{opacity:0}}
-  .controls{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#0a1f23;border-top:1px solid #0f242a}
-  button{background:var(--panel);color:var(--text);border:1px solid #14343a;border-radius:8px;
+  .controls{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#20140f;border-top:1px solid #2b1d18}
+  button{background:var(--panel);color:var(--text);border:1px solid #3a2820;border-radius:8px;
          padding:8px 14px;font-size:14px;cursor:pointer;font-family:var(--sans)}
   button:hover{background:var(--panel2);border-color:var(--sky)}
-  button.primary{background:var(--sky);color:#04263a;border-color:var(--sky);font-weight:700;min-width:104px}
-  .progress{flex:1;height:6px;background:#0f242a;border-radius:3px;overflow:hidden}
+  button.primary{background:var(--sky);color:#2a1410;border-color:var(--sky);font-weight:700;min-width:104px}
+  .progress{flex:1;height:6px;background:#2b1d18;border-radius:3px;overflow:hidden}
   .progress .bar{height:100%;width:0;background:linear-gradient(90deg,var(--sky),var(--emerald));transition:width .25s}
   .count{color:var(--muted);font-size:12px;font-family:var(--mono);min-width:46px;text-align:right}
   .note{margin-top:12px;color:var(--muted);font-size:12.5px}

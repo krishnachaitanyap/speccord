@@ -1,38 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-label="speccord — the spec is the contract your code is checked against">
   <defs>
-    <linearGradient id="bring" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#22d3ee"/>
-      <stop offset="0.55" stop-color="#2dd4bf"/>
-      <stop offset="1" stop-color="#5eead4"/>
+    <linearGradient id="bhex" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff8a63"/>
+      <stop offset="0.55" stop-color="#ff6f5c"/>
+      <stop offset="1" stop-color="#e85a63"/>
     </linearGradient>
-    <linearGradient id="bcheck" x1="0" y1="1" x2="1" y2="0">
-      <stop offset="0" stop-color="#22d3ee"/>
-      <stop offset="1" stop-color="#2dd4bf"/>
+    <linearGradient id="bs" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff4ec"/>
+      <stop offset="1" stop-color="#ffd9c9"/>
     </linearGradient>
     <linearGradient id="word" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#d6eef0"/>
-      <stop offset="1" stop-color="#b8dfe2"/>
+      <stop offset="0" stop-color="#f7e9e3"/>
+      <stop offset="1" stop-color="#ecd3c8"/>
     </linearGradient>
   </defs>
-  <rect width="1280" height="640" fill="#07171a"/>
-  <!-- accent baseline -->
-  <rect x="0" y="470" width="1280" height="3" fill="#0f242a"/>
+  <rect width="1280" height="640" fill="#1d1411"/>
+  <rect x="0" y="470" width="1280" height="3" fill="#2b1d18"/>
 
   <!-- mark -->
-  <g transform="translate(232,180) scale(0.55)">
-    <rect x="0" y="0" width="512" height="512" rx="116" fill="#08191c"/>
-    <rect x="22" y="22" width="468" height="468" rx="96" fill="none" stroke="url(#bring)" stroke-width="14"/>
-    <rect x="150" y="156" width="150" height="20" rx="10" fill="#0f242a"/>
-    <rect x="150" y="200" width="100" height="20" rx="10" fill="#0f242a"/>
-    <path d="M150 290 L228 366 L372 176" fill="none" stroke="url(#bcheck)" stroke-width="48"
-          stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="translate(150,128) scale(0.56)">
+    <polygon points="452,256 354,426 158,426 60,256 158,86 354,86"
+             fill="url(#bhex)" stroke="url(#bhex)" stroke-width="34" stroke-linejoin="round"/>
+    <path d="M330 182 C292 156 236 158 208 182 C176 209 184 247 236 262
+             C292 278 330 292 322 326 C312 360 250 364 198 336"
+          fill="none" stroke="url(#bs)" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 
   <!-- wordmark + tagline -->
-  <text x="540" y="320" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="132"
+  <text x="500" y="320" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="132"
         font-weight="bold" fill="url(#word)">speccord</text>
-  <text x="546" y="388" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="30"
-        fill="#22d3ee">the spec is the contract your code is checked against</text>
-  <text x="546" y="436" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="23"
-        fill="#8fb2b6">spec-driven development CLI · deterministic gates · AI-agent native</text>
+  <text x="506" y="388" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="30"
+        fill="#ff7a5c">the spec is the contract your code is checked against</text>
+  <text x="506" y="436" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="23"
+        fill="#bb9a8d">spec-driven development CLI · deterministic gates · AI-agent native</text>
 </svg>

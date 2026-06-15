@@ -1,30 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img">
-  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#07171a" opacity="1.0"/>
-  <rect x="0" y="0" width="12" height="720" rx="0" fill="#2dd4bf" opacity="1.0"/>
-  <text x="80" y="92" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#2dd4bf" text-anchor="start" opacity="1.0">INTEGRATION</text>
-  <text x="80" y="150" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="bold" fill="#d6eef0" text-anchor="start" opacity="1.0">Plugs into your AI agent</text>
-  <rect x="80" y="178" width="120" height="5" rx="2" fill="#2dd4bf" opacity="1.0"/>
-  <text x="80" y="205" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="21" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0">speccord agent-rules  wires up MCP + a spec-as-contract ruleset for each tool.</text>
-  <rect x="80" y="245" width="350" height="150" rx="16" fill="#0f242a" opacity="1.0"/>
-  <rect x="80" y="245" width="350" height="8" rx="4" fill="#22d3ee" opacity="1.0"/>
-  <text x="106" y="300" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#22d3ee" text-anchor="start" opacity="1.0">Claude Code</text>
-  <text x="106" y="340" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="18" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">.mcp.json</text>
-  <text x="106" y="372" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="18" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0">CLAUDE.md</text>
-  <rect x="460" y="245" width="350" height="150" rx="16" fill="#0f242a" opacity="1.0"/>
-  <rect x="460" y="245" width="350" height="8" rx="4" fill="#5eead4" opacity="1.0"/>
-  <text x="486" y="300" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#5eead4" text-anchor="start" opacity="1.0">Cursor</text>
-  <text x="486" y="340" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="18" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">.cursor/mcp.json</text>
-  <text x="486" y="372" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="18" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0">.cursor/rules/*.mdc</text>
-  <rect x="840" y="245" width="350" height="150" rx="16" fill="#0f242a" opacity="1.0"/>
-  <rect x="840" y="245" width="350" height="8" rx="4" fill="#67e8f9" opacity="1.0"/>
-  <text x="866" y="300" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#67e8f9" text-anchor="start" opacity="1.0">Copilot / VS Code</text>
-  <text x="866" y="340" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="18" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">.vscode/mcp.json</text>
-  <text x="866" y="372" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="18" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0">copilot-instructions.md</text>
-  <rect x="80" y="430" width="1120" height="130" rx="16" fill="#0b2026" opacity="1.0"/>
-  <text x="110" y="472" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="bold" fill="#2dd4bf" text-anchor="start" opacity="1.0">MCP tools (speccord mcp):</text>
-  <text x="110" y="510" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">read  → get_base_spec · get_constitution · story_next</text>
-  <text x="110" y="540" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">verify→ analyze · lint · gate · conform     transition→ advance</text>
-  <text x="80" y="600" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#d6eef0" text-anchor="start" opacity="1.0">The agent reads the spec, writes code, runs the gates, fixes, then advances. Loop.</text>
-  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#8fb2b6" text-anchor="start" opacity="1.0">speccord</text>
-  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#8fb2b6" text-anchor="end" opacity="1.0">8 / 9</text>
+  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#1d1411" opacity="1.0"/>
+  <rect x="0" y="0" width="12" height="720" rx="0" fill="#ffa886" opacity="1.0"/>
+  <text x="80" y="92" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#ffa886" text-anchor="start" opacity="1.0">INTEGRATION</text>
+  <text x="80" y="150" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="bold" fill="#f7e9e3" text-anchor="start" opacity="1.0">Plugs into your AI agent</text>
+  <rect x="80" y="178" width="120" height="5" rx="2" fill="#ffa886" opacity="1.0"/>
+  <text x="80" y="205" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="21" font-weight="normal" fill="#bb9a8d" text-anchor="start" opacity="1.0">speccord agent-rules  wires up MCP + a spec-as-contract ruleset for each tool.</text>
+  <rect x="80" y="245" width="350" height="150" rx="16" fill="#2b1d18" opacity="1.0"/>
+  <rect x="80" y="245" width="350" height="8" rx="4" fill="#ff7a5c" opacity="1.0"/>
+  <text x="106" y="300" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#ff7a5c" text-anchor="start" opacity="1.0">Claude Code</text>
+  <text x="106" y="340" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="18" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">.mcp.json</text>
+  <text x="106" y="372" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="18" font-weight="normal" fill="#bb9a8d" text-anchor="start" opacity="1.0">CLAUDE.md</text>
+  <rect x="460" y="245" width="350" height="150" rx="16" fill="#2b1d18" opacity="1.0"/>
+  <rect x="460" y="245" width="350" height="8" rx="4" fill="#e85a63" opacity="1.0"/>
+  <text x="486" y="300" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#e85a63" text-anchor="start" opacity="1.0">Cursor</text>
+  <text x="486" y="340" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="18" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">.cursor/mcp.json</text>
+  <text x="486" y="372" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="18" font-weight="normal" fill="#bb9a8d" text-anchor="start" opacity="1.0">.cursor/rules/*.mdc</text>
+  <rect x="840" y="245" width="350" height="150" rx="16" fill="#2b1d18" opacity="1.0"/>
+  <rect x="840" y="245" width="350" height="8" rx="4" fill="#ffc89e" opacity="1.0"/>
+  <text x="866" y="300" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffc89e" text-anchor="start" opacity="1.0">Copilot / VS Code</text>
+  <text x="866" y="340" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="18" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">.vscode/mcp.json</text>
+  <text x="866" y="372" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="18" font-weight="normal" fill="#bb9a8d" text-anchor="start" opacity="1.0">copilot-instructions.md</text>
+  <rect x="80" y="430" width="1120" height="130" rx="16" fill="#241712" opacity="1.0"/>
+  <text x="110" y="472" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="bold" fill="#ffa886" text-anchor="start" opacity="1.0">MCP tools (speccord mcp):</text>
+  <text x="110" y="510" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">read  → get_base_spec · get_constitution · story_next</text>
+  <text x="110" y="540" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">verify→ analyze · lint · gate · conform     transition→ advance</text>
+  <text x="80" y="600" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#f7e9e3" text-anchor="start" opacity="1.0">The agent reads the spec, writes code, runs the gates, fixes, then advances. Loop.</text>
+  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#bb9a8d" text-anchor="start" opacity="1.0">speccord</text>
+  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#bb9a8d" text-anchor="end" opacity="1.0">8 / 9</text>
 </svg>

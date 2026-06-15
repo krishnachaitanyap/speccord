@@ -1,37 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img">
-  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#07171a" opacity="1.0"/>
-  <rect x="0" y="0" width="12" height="720" rx="0" fill="#22d3ee" opacity="1.0"/>
-  <text x="80" y="92" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#22d3ee" text-anchor="start" opacity="1.0">THE WORKFLOW</text>
-  <text x="80" y="150" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="bold" fill="#d6eef0" text-anchor="start" opacity="1.0">Four phases → commands</text>
-  <rect x="80" y="178" width="120" height="5" rx="2" fill="#22d3ee" opacity="1.0"/>
-  <rect x="80" y="230" width="270" height="320" rx="16" fill="#0f242a" opacity="1.0"/>
-  <rect x="80" y="230" width="270" height="56" rx="16" fill="#0b2026" opacity="1.0"/>
-  <text x="215.0" y="267" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#22d3ee" text-anchor="middle" opacity="1.0">ANALYSIS</text>
-  <text x="102" y="330" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">brief  (analyst)</text>
-  <text x="102" y="384" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">discover</text>
-  <text x="102" y="438" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">research</text>
-  <text x="352" y="395" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34" font-weight="normal" fill="#8fb2b6" text-anchor="middle" opacity="1.0">→</text>
-  <rect x="367" y="230" width="270" height="320" rx="16" fill="#0f242a" opacity="1.0"/>
-  <rect x="367" y="230" width="270" height="56" rx="16" fill="#0b2026" opacity="1.0"/>
-  <text x="502.0" y="267" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#2dd4bf" text-anchor="middle" opacity="1.0">PLANNING</text>
-  <text x="389" y="330" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">prd  (pm)</text>
-  <text x="389" y="384" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">base draft | new</text>
-  <text x="389" y="438" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">feature new · clarify</text>
-  <text x="639" y="395" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34" font-weight="normal" fill="#8fb2b6" text-anchor="middle" opacity="1.0">→</text>
-  <rect x="654" y="230" width="270" height="320" rx="16" fill="#0f242a" opacity="1.0"/>
-  <rect x="654" y="230" width="270" height="56" rx="16" fill="#0b2026" opacity="1.0"/>
-  <text x="789.0" y="267" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#5eead4" text-anchor="middle" opacity="1.0">SOLUTIONING</text>
-  <text x="676" y="330" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">plan  (architect)</text>
-  <text x="676" y="384" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">agent architect</text>
-  <text x="676" y="438" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">epics &amp; stories</text>
-  <text x="926" y="395" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34" font-weight="normal" fill="#8fb2b6" text-anchor="middle" opacity="1.0">→</text>
-  <rect x="941" y="230" width="270" height="320" rx="16" fill="#0f242a" opacity="1.0"/>
-  <rect x="941" y="230" width="270" height="56" rx="16" fill="#0b2026" opacity="1.0"/>
-  <text x="1076.0" y="267" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#67e8f9" text-anchor="middle" opacity="1.0">IMPLEMENTATION</text>
-  <text x="963" y="330" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">story new (sm)</text>
-  <text x="963" y="384" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">implement (dev)</text>
-  <text x="963" y="438" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">review (qa)</text>
-  <text x="80" y="612" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0">Always-on: constitution · analyze · checklist · lint · status · advance · gate · agent</text>
-  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#8fb2b6" text-anchor="start" opacity="1.0">speccord</text>
-  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#8fb2b6" text-anchor="end" opacity="1.0">6 / 9</text>
+  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#1d1411" opacity="1.0"/>
+  <rect x="0" y="0" width="12" height="720" rx="0" fill="#ff7a5c" opacity="1.0"/>
+  <text x="80" y="92" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#ff7a5c" text-anchor="start" opacity="1.0">THE WORKFLOW</text>
+  <text x="80" y="150" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="bold" fill="#f7e9e3" text-anchor="start" opacity="1.0">Four phases → commands</text>
+  <rect x="80" y="178" width="120" height="5" rx="2" fill="#ff7a5c" opacity="1.0"/>
+  <rect x="80" y="230" width="270" height="320" rx="16" fill="#2b1d18" opacity="1.0"/>
+  <rect x="80" y="230" width="270" height="56" rx="16" fill="#241712" opacity="1.0"/>
+  <text x="215.0" y="267" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#ff7a5c" text-anchor="middle" opacity="1.0">ANALYSIS</text>
+  <text x="102" y="330" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">brief  (analyst)</text>
+  <text x="102" y="384" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">discover</text>
+  <text x="102" y="438" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">research</text>
+  <text x="352" y="395" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34" font-weight="normal" fill="#bb9a8d" text-anchor="middle" opacity="1.0">→</text>
+  <rect x="367" y="230" width="270" height="320" rx="16" fill="#2b1d18" opacity="1.0"/>
+  <rect x="367" y="230" width="270" height="56" rx="16" fill="#241712" opacity="1.0"/>
+  <text x="502.0" y="267" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffa886" text-anchor="middle" opacity="1.0">PLANNING</text>
+  <text x="389" y="330" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">prd  (pm)</text>
+  <text x="389" y="384" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">base draft | new</text>
+  <text x="389" y="438" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">feature new · clarify</text>
+  <text x="639" y="395" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34" font-weight="normal" fill="#bb9a8d" text-anchor="middle" opacity="1.0">→</text>
+  <rect x="654" y="230" width="270" height="320" rx="16" fill="#2b1d18" opacity="1.0"/>
+  <rect x="654" y="230" width="270" height="56" rx="16" fill="#241712" opacity="1.0"/>
+  <text x="789.0" y="267" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#e85a63" text-anchor="middle" opacity="1.0">SOLUTIONING</text>
+  <text x="676" y="330" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">plan  (architect)</text>
+  <text x="676" y="384" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">agent architect</text>
+  <text x="676" y="438" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">epics &amp; stories</text>
+  <text x="926" y="395" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34" font-weight="normal" fill="#bb9a8d" text-anchor="middle" opacity="1.0">→</text>
+  <rect x="941" y="230" width="270" height="320" rx="16" fill="#2b1d18" opacity="1.0"/>
+  <rect x="941" y="230" width="270" height="56" rx="16" fill="#241712" opacity="1.0"/>
+  <text x="1076.0" y="267" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffc89e" text-anchor="middle" opacity="1.0">IMPLEMENTATION</text>
+  <text x="963" y="330" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">story new (sm)</text>
+  <text x="963" y="384" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">implement (dev)</text>
+  <text x="963" y="438" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">review (qa)</text>
+  <text x="80" y="612" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#bb9a8d" text-anchor="start" opacity="1.0">Always-on: constitution · analyze · checklist · lint · status · advance · gate · agent</text>
+  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#bb9a8d" text-anchor="start" opacity="1.0">speccord</text>
+  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#bb9a8d" text-anchor="end" opacity="1.0">6 / 9</text>
 </svg>

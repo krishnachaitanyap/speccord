@@ -1,31 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img">
-  <rect width="1200" height="600" rx="0" fill="#04100f"/>
+  <rect width="1200" height="600" rx="0" fill="#160f0d"/>
   <!-- terminal window -->
-  <rect x="120" y="70" width="960" height="430" rx="14" fill="#08191c" stroke="#0f242a" stroke-width="1"/>
-  <rect x="120" y="70" width="960" height="44" rx="14" fill="#0a1f23"/>
+  <rect x="120" y="70" width="960" height="430" rx="14" fill="#1a110e" stroke="#2b1d18" stroke-width="1"/>
+  <rect x="120" y="70" width="960" height="44" rx="14" fill="#20140f"/>
   <circle cx="150" cy="92" r="7" fill="#ff5f57"/><circle cx="174" cy="92" r="7" fill="#febc2e"/><circle cx="198" cy="92" r="7" fill="#28c840"/>
-  <text x="240" y="97" font-family="monospace" font-size="15" fill="#8fb2b6">orders — speccord demo</text>
+  <text x="240" y="97" font-family="monospace" font-size="15" fill="#bb9a8d">orders — speccord demo</text>
   <!-- transcript -->
-  <text x="150" y="160" font-family="monospace" font-size="12" fill="#5eead4" letter-spacing="1">SETUP</text>
-  <text x="150" y="186" font-family="monospace" font-size="16" fill="#d6eef0"><tspan fill="#2dd4bf">$ </tspan>speccord init --service orders --scale 2</text>
-  <text x="150" y="214" font-family="monospace" font-size="15" fill="#b8dfe2">Initialized speccord for service "orders".</text>
-  <text x="150" y="238" font-family="monospace" font-size="15" fill="#22d3ee">See what is enabled at this scale:  speccord capabilities</text>
-  <text x="150" y="286" font-family="monospace" font-size="16" fill="#d6eef0"><tspan fill="#2dd4bf">$ </tspan>speccord discover</text>
-  <text x="150" y="312" font-family="monospace" font-size="15" fill="#b8dfe2">Discovered: orders — 14 operations, 6 tables, 3 topics</text>
-  <text x="150" y="360" font-family="monospace" font-size="16" fill="#d6eef0"><tspan fill="#2dd4bf">$ </tspan>speccord conform</text>
+  <text x="150" y="160" font-family="monospace" font-size="12" fill="#e85a63" letter-spacing="1">SETUP</text>
+  <text x="150" y="186" font-family="monospace" font-size="16" fill="#f7e9e3"><tspan fill="#ffa886">$ </tspan>speccord init --service orders --scale 2</text>
+  <text x="150" y="214" font-family="monospace" font-size="15" fill="#ecd3c8">Initialized speccord for service "orders".</text>
+  <text x="150" y="238" font-family="monospace" font-size="15" fill="#ff7a5c">See what is enabled at this scale:  speccord capabilities</text>
+  <text x="150" y="286" font-family="monospace" font-size="16" fill="#f7e9e3"><tspan fill="#ffa886">$ </tspan>speccord discover</text>
+  <text x="150" y="312" font-family="monospace" font-size="15" fill="#ecd3c8">Discovered: orders — 14 operations, 6 tables, 3 topics</text>
+  <text x="150" y="360" font-family="monospace" font-size="16" fill="#f7e9e3"><tspan fill="#ffa886">$ </tspan>speccord conform</text>
   <text x="150" y="386" font-family="monospace" font-size="15" fill="#f87171">NOT CONFORMANT: + table refunds — spec is out of date.</text>
   <!-- controls bar -->
-  <rect x="120" y="456" width="960" height="44" rx="0" fill="#0a1f23"/>
-  <text x="150" y="484" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#8fb2b6">⏮ Back</text>
-  <rect x="232" y="466" width="96" height="26" rx="7" fill="#22d3ee"/>
-  <text x="280" y="484" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="bold" fill="#04263a" text-anchor="middle">▶ Play</text>
-  <text x="350" y="484" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#8fb2b6">⏭ Next</text>
-  <rect x="440" y="476" width="520" height="6" rx="3" fill="#0f242a"/>
-  <rect x="440" y="476" width="180" height="6" rx="3" fill="#2dd4bf"/>
-  <text x="1000" y="484" font-family="monospace" font-size="13" fill="#8fb2b6">3 / 12</text>
+  <rect x="120" y="456" width="960" height="44" rx="0" fill="#20140f"/>
+  <text x="150" y="484" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#bb9a8d">⏮ Back</text>
+  <rect x="232" y="466" width="96" height="26" rx="7" fill="#ff7a5c"/>
+  <text x="280" y="484" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="bold" fill="#2a1410" text-anchor="middle">▶ Play</text>
+  <text x="350" y="484" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#bb9a8d">⏭ Next</text>
+  <rect x="440" y="476" width="520" height="6" rx="3" fill="#2b1d18"/>
+  <rect x="440" y="476" width="180" height="6" rx="3" fill="#ffa886"/>
+  <text x="1000" y="484" font-family="monospace" font-size="13" fill="#bb9a8d">3 / 12</text>
   <!-- big play overlay -->
-  <circle cx="600" cy="285" r="58" fill="#04100f" opacity="0.55"/>
-  <circle cx="600" cy="285" r="58" fill="none" stroke="#22d3ee" stroke-width="3"/>
-  <path d="M583 258 L583 312 L626 285 Z" fill="#22d3ee"/>
-  <text x="600" y="556" font-family="Helvetica,Arial,sans-serif" font-size="22" fill="#d6eef0" text-anchor="middle" font-weight="bold">Interactive demo — play · pause · back · next</text>
+  <circle cx="600" cy="285" r="58" fill="#160f0d" opacity="0.55"/>
+  <circle cx="600" cy="285" r="58" fill="none" stroke="#ff7a5c" stroke-width="3"/>
+  <path d="M583 258 L583 312 L626 285 Z" fill="#ff7a5c"/>
+  <text x="600" y="556" font-family="Helvetica,Arial,sans-serif" font-size="22" fill="#f7e9e3" text-anchor="middle" font-weight="bold">Interactive demo — play · pause · back · next</text>
 </svg>

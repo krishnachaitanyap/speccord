@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img">
-  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#07171a" opacity="1.0"/>
-  <rect x="0" y="250" width="1280" height="3" rx="0" fill="#22d3ee" opacity="0.5"/>
-  <rect x="0" y="256" width="1280" height="3" rx="0" fill="#2dd4bf" opacity="0.5"/>
-  <rect x="0" y="262" width="1280" height="3" rx="0" fill="#5eead4" opacity="0.5"/>
-  <text x="640.0" y="250" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="120" font-weight="bold" fill="#d6eef0" text-anchor="middle" opacity="1.0">speccord</text>
-  <text x="640.0" y="320" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="normal" fill="#22d3ee" text-anchor="middle" opacity="1.0">the spec is the contract your code is checked against</text>
-  <text x="640.0" y="430" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="normal" fill="#8fb2b6" text-anchor="middle" opacity="1.0">A spec-driven development CLI — keep code and spec in sync, both ways</text>
-  <rect x="405.0" y="480" width="93" height="40" rx="20" fill="none" opacity="1.0" stroke="#22d3ee" stroke-width="2"/><text x="451.5" y="506" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#22d3ee" text-anchor="middle" opacity="1.0">Extract</text>
-  <rect x="585.0" y="480" width="104" height="40" rx="20" fill="none" opacity="1.0" stroke="#2dd4bf" stroke-width="2"/><text x="637.0" y="506" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#2dd4bf" text-anchor="middle" opacity="1.0">Generate</text>
-  <rect x="780.0" y="480" width="93" height="40" rx="20" fill="none" opacity="1.0" stroke="#5eead4" stroke-width="2"/><text x="826.5" y="506" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#5eead4" text-anchor="middle" opacity="1.0">Enforce</text>
-  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#8fb2b6" text-anchor="start" opacity="1.0">speccord</text>
-  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#8fb2b6" text-anchor="end" opacity="1.0">1 / 9</text>
+  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#1d1411" opacity="1.0"/>
+  <rect x="0" y="250" width="1280" height="3" rx="0" fill="#ff7a5c" opacity="0.5"/>
+  <rect x="0" y="256" width="1280" height="3" rx="0" fill="#ffa886" opacity="0.5"/>
+  <rect x="0" y="262" width="1280" height="3" rx="0" fill="#e85a63" opacity="0.5"/>
+  <text x="640.0" y="250" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="120" font-weight="bold" fill="#f7e9e3" text-anchor="middle" opacity="1.0">speccord</text>
+  <text x="640.0" y="320" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="normal" fill="#ff7a5c" text-anchor="middle" opacity="1.0">the spec is the contract your code is checked against</text>
+  <text x="640.0" y="430" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="normal" fill="#bb9a8d" text-anchor="middle" opacity="1.0">A spec-driven development CLI — keep code and spec in sync, both ways</text>
+  <rect x="405.0" y="480" width="93" height="40" rx="20" fill="none" opacity="1.0" stroke="#ff7a5c" stroke-width="2"/><text x="451.5" y="506" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#ff7a5c" text-anchor="middle" opacity="1.0">Extract</text>
+  <rect x="585.0" y="480" width="104" height="40" rx="20" fill="none" opacity="1.0" stroke="#ffa886" stroke-width="2"/><text x="637.0" y="506" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#ffa886" text-anchor="middle" opacity="1.0">Generate</text>
+  <rect x="780.0" y="480" width="93" height="40" rx="20" fill="none" opacity="1.0" stroke="#e85a63" stroke-width="2"/><text x="826.5" y="506" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#e85a63" text-anchor="middle" opacity="1.0">Enforce</text>
+  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#bb9a8d" text-anchor="start" opacity="1.0">speccord</text>
+  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#bb9a8d" text-anchor="end" opacity="1.0">1 / 9</text>
 </svg>

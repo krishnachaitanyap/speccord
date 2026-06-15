@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "docs/demo/**"
+      - "docs/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -35,11 +35,11 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload demo as the site
+      - name: Upload docs as the site
         uses: actions/upload-pages-artifact@v3
         with:
-          # The interactive demo is self-contained; serve it at the site root.
-          path: docs/demo
+          # Site root = docs/ (index.html is the documentation page; demo at /demo/).
+          path: docs
 
       - name: Deploy
         id: deploy

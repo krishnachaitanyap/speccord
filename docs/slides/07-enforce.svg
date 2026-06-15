@@ -1,24 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img">
-  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#07171a" opacity="1.0"/>
-  <rect x="0" y="0" width="12" height="720" rx="0" fill="#2dd4bf" opacity="1.0"/>
-  <text x="80" y="92" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#2dd4bf" text-anchor="start" opacity="1.0">THE SPINE</text>
-  <text x="80" y="150" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="bold" fill="#d6eef0" text-anchor="start" opacity="1.0">Enforcement is code, not vibes</text>
-  <rect x="80" y="178" width="120" height="5" rx="2" fill="#2dd4bf" opacity="1.0"/>
-  <rect x="80" y="225" width="1120" height="120" rx="16" fill="#0f242a" opacity="1.0"/>
-  <rect x="80" y="225" width="8" height="120" rx="4" fill="#22d3ee" opacity="1.0"/>
-  <text x="120" y="273" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27" font-weight="bold" fill="#22d3ee" text-anchor="start" opacity="1.0">Lifecycle</text>
-  <text x="120" y="315" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0">Entry gates: lint, base ref, ACs↔tests, plan+tasks.</text>
-  <text x="700" y="295" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">Draft → In Review → Approved → In Implementation → Implemented</text>
-  <rect x="80" y="363" width="1120" height="120" rx="16" fill="#0f242a" opacity="1.0"/>
-  <rect x="80" y="363" width="8" height="120" rx="4" fill="#5eead4" opacity="1.0"/>
-  <text x="120" y="411" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27" font-weight="bold" fill="#5eead4" text-anchor="start" opacity="1.0">CI drift gate</text>
-  <text x="120" y="453" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0">Contract file changed but no spec updated → build fails.</text>
-  <text x="700" y="433" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">speccord gate --base origin/main</text>
-  <rect x="80" y="501" width="1120" height="120" rx="16" fill="#0f242a" opacity="1.0"/>
-  <rect x="80" y="501" width="8" height="120" rx="4" fill="#67e8f9" opacity="1.0"/>
-  <text x="120" y="549" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27" font-weight="bold" fill="#67e8f9" text-anchor="start" opacity="1.0">Runtime conform</text>
-  <text x="120" y="591" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#8fb2b6" text-anchor="start" opacity="1.0">Re-discovers the live surface, diffs the baseline → fails on drift.</text>
-  <text x="700" y="571" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#d6eef0" text-anchor="start" opacity="1.0">speccord conform</text>
-  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#8fb2b6" text-anchor="start" opacity="1.0">speccord</text>
-  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#8fb2b6" text-anchor="end" opacity="1.0">7 / 9</text>
+  <rect x="0" y="0" width="1280" height="720" rx="0" fill="#1d1411" opacity="1.0"/>
+  <rect x="0" y="0" width="12" height="720" rx="0" fill="#ffa886" opacity="1.0"/>
+  <text x="80" y="92" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#ffa886" text-anchor="start" opacity="1.0">THE SPINE</text>
+  <text x="80" y="150" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="bold" fill="#f7e9e3" text-anchor="start" opacity="1.0">Enforcement is code, not vibes</text>
+  <rect x="80" y="178" width="120" height="5" rx="2" fill="#ffa886" opacity="1.0"/>
+  <rect x="80" y="225" width="1120" height="120" rx="16" fill="#2b1d18" opacity="1.0"/>
+  <rect x="80" y="225" width="8" height="120" rx="4" fill="#ff7a5c" opacity="1.0"/>
+  <text x="120" y="273" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27" font-weight="bold" fill="#ff7a5c" text-anchor="start" opacity="1.0">Lifecycle</text>
+  <text x="120" y="315" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#bb9a8d" text-anchor="start" opacity="1.0">Entry gates: lint, base ref, ACs↔tests, plan+tasks.</text>
+  <text x="700" y="295" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">Draft → In Review → Approved → In Implementation → Implemented</text>
+  <rect x="80" y="363" width="1120" height="120" rx="16" fill="#2b1d18" opacity="1.0"/>
+  <rect x="80" y="363" width="8" height="120" rx="4" fill="#e85a63" opacity="1.0"/>
+  <text x="120" y="411" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27" font-weight="bold" fill="#e85a63" text-anchor="start" opacity="1.0">CI drift gate</text>
+  <text x="120" y="453" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#bb9a8d" text-anchor="start" opacity="1.0">Contract file changed but no spec updated → build fails.</text>
+  <text x="700" y="433" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">speccord gate --base origin/main</text>
+  <rect x="80" y="501" width="1120" height="120" rx="16" fill="#2b1d18" opacity="1.0"/>
+  <rect x="80" y="501" width="8" height="120" rx="4" fill="#ffc89e" opacity="1.0"/>
+  <text x="120" y="549" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27" font-weight="bold" fill="#ffc89e" text-anchor="start" opacity="1.0">Runtime conform</text>
+  <text x="120" y="591" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#bb9a8d" text-anchor="start" opacity="1.0">Re-discovers the live surface, diffs the baseline → fails on drift.</text>
+  <text x="700" y="571" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="20" font-weight="normal" fill="#f7e9e3" text-anchor="start" opacity="1.0">speccord conform</text>
+  <text x="80" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#bb9a8d" text-anchor="start" opacity="1.0">speccord</text>
+  <text x="1200" y="680" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#bb9a8d" text-anchor="end" opacity="1.0">7 / 9</text>
 </svg>

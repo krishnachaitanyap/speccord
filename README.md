@@ -3,7 +3,8 @@
 </p>
 
 <p align="center">
-  <a href="https://krishnachaitanyap.github.io/speccord/">Live demo</a> ·
+  <a href="https://krishnachaitanyap.github.io/speccord/">Docs site</a> ·
+  <a href="https://krishnachaitanyap.github.io/speccord/demo/">Live demo</a> ·
   <a href="USAGE.md">Usage guide</a> ·
   <a href="#architecture">Architecture</a> ·
   <a href="#integrate-with-ai-agents-claude-code-cursor-copilot">AI agents</a>
@@ -75,9 +76,9 @@ A slide walkthrough of what speccord is and how to use it.
 A scripted, video-style walkthrough of the whole workflow with **play / pause / resume / back /
 next** controls — runs entirely in the browser, no install.
 
-▶ **[Launch the live demo](https://krishnachaitanyap.github.io/speccord/)** (hosted on GitHub Pages)
+📖 **[Documentation site](https://krishnachaitanyap.github.io/speccord/)** · ▶ **[Live demo](https://krishnachaitanyap.github.io/speccord/demo/)** (both hosted on GitHub Pages)
 
-[![speccord interactive demo](docs/demo/poster.svg)](https://krishnachaitanyap.github.io/speccord/)
+[![speccord interactive demo](docs/demo/poster.svg)](https://krishnachaitanyap.github.io/speccord/demo/)
 
 Prefer local? It's a single self-contained file — open `docs/demo/index.html` in any browser, or run
 `node docs/demo/serve.cjs` → http://localhost:8732. Space = play/pause, ← / → = back/next.

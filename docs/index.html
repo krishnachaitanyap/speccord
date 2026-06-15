@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="logo.svg" />
+<title>speccord — spec-driven development CLI</title>
+<meta name="description" content="speccord treats the spec as the executable contract your code is continuously checked against — extract, generate, and enforce, in both directions." />
+<style>
+  :root{
+    --bg:#160f0d; --panel:#221713; --panel2:#2b1d18; --line:#3a2820;
+    --text:#f7e9e3; --muted:#bb9a8d;
+    --coral:#ff7a5c; --peach:#ffa886; --rose:#e85a63; --sand:#ffc89e;
+    --mono:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+    --sans:'Helvetica Neue',Helvetica,Arial,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.65}
+  a{color:var(--coral);text-decoration:none}
+  a:hover{text-decoration:underline}
+  code{font-family:var(--mono);font-size:.92em;background:#2b1d1880;color:var(--sand);padding:.1em .35em;border-radius:5px}
+  .wrap{max-width:960px;margin:0 auto;padding:0 22px}
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:10;background:#160f0dcc;backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;gap:14px;height:60px}
+  .nav img{width:30px;height:30px}
+  .nav .brand{font-weight:700;font-size:18px}
+  .nav .links{margin-left:auto;display:flex;gap:20px;font-size:14px}
+  .nav .links a{color:var(--muted)}
+  .nav .links a:hover{color:var(--text);text-decoration:none}
+  /* hero */
+  .hero{text-align:center;padding:64px 0 40px}
+  .hero img{width:104px;height:104px;margin-bottom:18px}
+  .hero h1{font-size:54px;margin:0;letter-spacing:.5px}
+  .hero .tag{color:var(--coral);font-size:21px;margin:10px 0 4px}
+  .hero .sub{color:var(--muted);max-width:620px;margin:8px auto 26px}
+  .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{padding:11px 22px;border-radius:9px;font-weight:600;font-size:15px;border:1px solid var(--line)}
+  .btn.primary{background:linear-gradient(120deg,var(--coral),var(--rose));color:#2a1410;border:none}
+  .btn:hover{text-decoration:none;border-color:var(--coral)}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:44px 0}
+  .pillar{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .pillar h3{margin:0 0 6px;color:var(--coral);font-size:17px}
+  .pillar .dir{font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .pillar p{margin:8px 0 0;font-size:14px;color:var(--muted)}
+  /* sections */
+  section{padding:30px 0;border-top:1px solid var(--line)}
+  section h2{font-size:28px;margin:.2em 0 .5em}
+  section h3{font-size:18px;color:var(--peach);margin:1.4em 0 .4em}
+  pre{background:#120c0a;border:1px solid var(--line);border-radius:10px;padding:16px 18px;overflow:auto}
+  pre code{background:none;color:var(--text);padding:0}
+  .c-comment{color:var(--muted)} .c-cmd{color:var(--peach)} .c-ok{color:var(--coral)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:.5em 0}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600}
+  td code{white-space:nowrap}
+  footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:14px;text-align:center}
+  @media(max-width:720px){.pillars,.grid2{grid-template-columns:1fr}.hero h1{font-size:40px}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <img src="logo.svg" alt="speccord logo" />
+  <span class="brand">speccord</span>
+  <nav class="links">
+    <a href="#install">Install</a>
+    <a href="#quickstart">Quick start</a>
+    <a href="#commands">Commands</a>
+    <a href="#agents">AI agents</a>
+    <a href="demo/">Demo</a>
+    <a href="https://github.com/krishnachaitanyap/speccord">GitHub</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+  <div class="hero">
+    <img src="logo.svg" alt="speccord" />
+    <h1>speccord</h1>
+    <div class="tag">the spec is the contract your code is checked against</div>
+    <p class="sub">A spec-driven development CLI. It works in both directions — discover the contract of an
+      existing service, or generate code from a spec for a new one — and fails the build when the two drift apart.</p>
+    <div class="btns">
+      <a class="btn primary" href="#quickstart">Get started</a>
+      <a class="btn" href="demo/">▶ Live demo</a>
+      <a class="btn" href="speccord-deck.pptx">Deck</a>
+    </div>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar"><h3>Extract</h3><div class="dir">code → spec</div>
+      <p>Discover the as-is contract of an existing service: API, data, events, security.</p></div>
+    <div class="pillar"><h3>Generate</h3><div class="dir">spec → code</div>
+      <p>constitution → spec → plan → tasks → story → implementation, with role personas.</p></div>
+    <div class="pillar"><h3>Enforce</h3><div class="dir">keep them in sync</div>
+      <p>Lifecycle gates, a CI drift gate, and runtime conformance — deterministic, not prompts.</p></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section>
+    <h2>Why speccord</h2>
+    <p><b>Hybrid by construction.</b> Facts and pass/fail are <b>deterministic</b> — parsers, the contract-surface
+      diff, the lifecycle state machine, the gates are all plain code. <b>Only prose is model-written</b>, always
+      grounded in facts the tool already established, so the model never invents an endpoint, table, or scope.</p>
+    <p><b>Stack-agnostic.</b> Discovery reads the contract artifacts that exist in any language — OpenAPI, GraphQL,
+      Protobuf, AsyncAPI, Prisma, SQL — and enterprises can declare custom providers for proprietary frameworks.</p>
+    <p><b>AI-agent native.</b> A built-in MCP server exposes speccord as tools, resources, and prompts; one command
+      wires it into Claude Code, Cursor, and Copilot.</p>
+  </section>
+
+  <section id="install">
+    <h2>Install</h2>
+<pre><code><span class="c-comment"># Node.js >= 18</span>
+git clone https://github.com/krishnachaitanyap/speccord.git
+cd speccord
+npm install
+npm run build
+npm link            <span class="c-comment"># puts `speccord` on your PATH (or call ./bin/run.js)</span></code></pre>
+    <p>An <code>ANTHROPIC_API_KEY</code> is optional — every command runs without it (prose becomes deterministic
+      skeletons), and the deterministic guarantees never need it.</p>
+  </section>
+
+  <section id="quickstart">
+    <h2>Quick start</h2>
+    <div class="grid2">
+      <div>
+        <h3>Existing service</h3>
+<pre><code><span class="c-cmd">speccord</span> init --service orders
+<span class="c-cmd">speccord</span> discover        <span class="c-comment"># parse the contract surface</span>
+<span class="c-cmd">speccord</span> base draft      <span class="c-comment"># confirm facts → base spec</span>
+<span class="c-cmd">speccord</span> conform        <span class="c-ok"># ✓ code matches the baseline</span></code></pre>
+      </div>
+      <div>
+        <h3>New service</h3>
+<pre><code><span class="c-cmd">speccord</span> init --service gift --greenfield
+<span class="c-cmd">speccord</span> base new --intent "issue & redeem gift cards"
+<span class="c-cmd">speccord</span> feature new --id SPEC-1 --title "Issue card"
+<span class="c-cmd">speccord</span> plan specs/features/SPEC-1-*.md</code></pre>
+      </div>
+    </div>
+
+    <h3>The forward workflow (any mode)</h3>
+<pre><code><span class="c-cmd">speccord</span> constitution                       <span class="c-comment"># project principles (P-n) [once]</span>
+<span class="c-cmd">speccord</span> feature new --id SPEC-142 --title "Order cancellation"
+<span class="c-cmd">speccord</span> clarify   specs/features/SPEC-142-*.md   <span class="c-comment"># resolve open questions</span>
+<span class="c-cmd">speccord</span> plan      specs/features/SPEC-142-*.md
+<span class="c-cmd">speccord</span> tasks     specs/features/SPEC-142-*.md
+<span class="c-cmd">speccord</span> analyze   specs/features/SPEC-142-*.md   <span class="c-comment"># deterministic cross-check</span>
+<span class="c-cmd">speccord</span> advance   specs/features/SPEC-142-*.md --to Approved
+<span class="c-cmd">speccord</span> implement specs/features/SPEC-142-*.md   <span class="c-comment"># prompt pack, or --execute</span></code></pre>
+
+    <h3>Enforce in CI</h3>
+<pre><code><span class="c-cmd">speccord</span> gate --base origin/main   <span class="c-comment"># contract changed but no spec updated → fail</span>
+<span class="c-cmd">speccord</span> conform                   <span class="c-comment"># running code drifted from baseline → fail</span></code></pre>
+  </section>
+
+  <section>
+    <h2>One knob: scale</h2>
+    <p>You pick <b>how much process</b> with a single number; phases, roles, and capabilities derive from it and
+      are individually overridable. <code>speccord capabilities</code> shows exactly what's on.</p>
+    <table>
+      <tr><th>Scale</th><th>Adds</th></tr>
+      <tr><td><code>0</code> prototype</td><td>conformance only — no ceremony</td></tr>
+      <tr><td><code>1</code> small</td><td>+ plan, stories, lifecycle, CI gate</td></tr>
+      <tr><td><code>2</code> medium <i>(default)</i></td><td>+ solutioning, PRD, QA review</td></tr>
+      <tr><td><code>3</code> large</td><td>+ analysis (brief), UX</td></tr>
+      <tr><td><code>4</code> enterprise</td><td>+ product ownership, compliance gates</td></tr>
+    </table>
+  </section>
+
+  <section id="commands">
+    <h2>Commands</h2>
+    <table>
+      <tr><th>Phase</th><th>Commands</th></tr>
+      <tr><td>Analysis</td><td><code>brief</code>, <code>discover</code></td></tr>
+      <tr><td>Planning</td><td><code>prd</code>, <code>base draft|new</code>, <code>feature new</code>, <code>clarify</code></td></tr>
+      <tr><td>Solutioning</td><td><code>plan</code>, <code>agent architect</code></td></tr>
+      <tr><td>Implementation</td><td><code>story new|list|next|advance|implement</code>, <code>tasks</code>, <code>implement</code>, <code>review</code></td></tr>
+      <tr><td>Enforce</td><td><code>lint</code>, <code>analyze</code>, <code>advance</code>, <code>gate</code>, <code>conform</code></td></tr>
+      <tr><td>Agents</td><td><code>mcp</code>, <code>agent-rules</code>, <code>agent &lt;role&gt;</code></td></tr>
+    </table>
+  </section>
+
+  <section id="agents">
+    <h2>AI agent integration</h2>
+    <p>One command wires speccord into your coding agent as its contract layer — the agent generates, speccord verifies.</p>
+<pre><code><span class="c-cmd">speccord</span> agent-rules        <span class="c-comment"># writes MCP config + rules for Claude Code, Cursor, Copilot</span>
+<span class="c-cmd">speccord</span> mcp               <span class="c-comment"># the MCP server (stdio)</span></code></pre>
+    <p>The MCP server exposes <b>tools</b> (read / verify / transition / drive), <b>resources</b>
+      (<code>speccord://base-spec</code>, <code>speccord://constitution</code>, <code>speccord://story/{id}</code>),
+      and <b>prompts</b> (<code>implement-next-story</code>, <code>review-changes</code>, <code>fix-drift</code>).
+      The agent reads the spec, writes code, runs the gates, fixes what they report, and only then advances.</p>
+  </section>
+
+  <section>
+    <h2>Learn more</h2>
+    <p>
+      📖 <a href="https://github.com/krishnachaitanyap/speccord/blob/main/USAGE.md">Full usage guide</a> &nbsp;·&nbsp;
+      🗺️ <a href="https://github.com/krishnachaitanyap/speccord/blob/main/ROADMAP.md">Roadmap</a> &nbsp;·&nbsp;
+      ▶ <a href="demo/">Interactive demo</a> &nbsp;·&nbsp;
+      📊 <a href="speccord-deck.pptx">Slide deck</a> &nbsp;·&nbsp;
+      💻 <a href="https://github.com/krishnachaitanyap/speccord">Source</a>
+    </p>
+  </section>
+</div>
+
+<footer><div class="wrap">
+  speccord · the spec is the contract your code is checked against ·
+  <a href="https://github.com/krishnachaitanyap/speccord">github.com/krishnachaitanyap/speccord</a>
+</div></footer>
+</body>
+</html>
