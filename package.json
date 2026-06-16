@@ -1,10 +1,35 @@
 {
   "name": "speccord",
   "version": "0.1.0",
-  "description": "Spec-driven development CLI for brownfield services: discover, review, confirm, generate, and maintain the lifecycle of specs.",
+  "description": "Spec-driven development CLI: the spec is the executable contract your code is checked against. Discover existing services, generate from specs, and enforce the contract with deterministic gates + an MCP server for AI agents.",
   "type": "module",
+  "license": "MIT",
+  "author": "Krishna Chaitanya P",
+  "homepage": "https://github.com/krishnachaitanyap/speccord#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krishnachaitanyap/speccord.git"
+  },
+  "bugs": {
+    "url": "https://github.com/krishnachaitanyap/speccord/issues"
+  },
+  "keywords": [
+    "spec-driven-development",
+    "sdd",
+    "openapi",
+    "contract",
+    "drift-detection",
+    "conformance",
+    "api-governance",
+    "mcp",
+    "ai-agents",
+    "cli",
+    "spring-boot",
+    "graphql",
+    "protobuf"
+  ],
   "bin": {
-    "speccord": "./bin/run.js"
+    "speccord": "bin/run.js"
   },
   "files": [
     "/bin",
@@ -13,10 +38,14 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepack": "npm run build"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.40.0",
